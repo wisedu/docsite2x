@@ -1,35 +1,32 @@
 ## Turing 前端开发框架
 
-### 浏览器支持范围
+### 浏览器引擎支持范围
 
+| PC   | Mobile  | 
+| --------   | -----  |
+| Chrome >= 55 | Android >= 6  |
+| Safari >= 10  | iOS >= 10  |
+| Firefox >= 61 |   |
+| Edge >= 13  |   |
+| Explorer >= 9  |   |
+
+双核浏览器:
 * 360 安全 >= 9.0
 * 360 极速 >= 9.1
-* Chrome >= 55
-* Firefox >= 61
-* Safari >= 10 
-* Explorer >= 9 
-* Edge >= 13 
-* iOS >= 10 
-* Android >= 6
 
 ### 原生 es6 语法与模块化开发
 
 开发时使用 Chrome 63 以上，使用 es6 的语法特性，进行开发调试。集成 Vue、Vue Router、Vuex
 
-支持的 js api 兼容
+| 支持的 JS API   | 不支持的 JS API  | 
+| --------   | -----  |
+| [ECMAScript: Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)  | ECMAScript: Symbol | 
+| [ECMAScript: Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) | ECMAScript: Collections |
+| [ECMAScript: String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String) | ECMAScript: Typed Arrays |
+| [ECMAScript: Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) | DOM API * |
+| [ECMAScript: Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)  | CSS功能 * |
 
-* [ECMAScript: Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
-* [ECMAScript: Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
-* [ECMAScript: String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
-* [ECMAScript: Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-* [ECMAScript: Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
-
-不支持:
-
-* ECMAScript: Symbol
-* ECMAScript: Collections
-* ECMAScript: Typed Arrays
-* DOM API、CSS功能。这两类是低版本浏览器本身不支持
+*低版本浏览器本身不支持
 
 
 引用框架库:
