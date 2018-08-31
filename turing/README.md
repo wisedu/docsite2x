@@ -1,5 +1,17 @@
 ## Turing 前端开发框架
 
+### 浏览器支持范围
+
+* 360 安全 >= 9.0
+* 360 极速 >= 9.1
+* Chrome >= 55
+* Firefox >= 61
+* Safari >= 10 
+* Explorer >= 9 
+* Edge >= 13 
+* iOS >= 10 
+* Android >= 6
+
 ### 原生 es6 语法与模块化开发
 
 开发时使用 Chrome 63 以上，使用 es6 的语法特性，进行开发调试。集成 Vue、Vue Router、Vuex
@@ -33,10 +45,17 @@
 
 ### 命令行编译,全面处理兼容性,无需安装环境
 
-* js es6 语法兼容性 ( 箭头函数=> / async&await / import&export / 展开运算符... / 类定义class&extend / 动态导入js,import('./xx.js') )
-* css 兼容性( last 3 Chrome versions / last 3 Firefox versions / Safari >= 10 / Explorer >= 9 / Edge >= 12 / iOS >= 10 / Android >= 6 )
+支持以下多浏览器兼容:
+
+* js es6 语法兼容性
+ * 箭头函数=>
+ * async & await 
+ * import & export 
+ * 展开运算符... 
+ * 类定义 class & extend 
+ * 动态导入js, import('./xx.js')
+* css 兼容性
 * Js、css文件合并
-* 产生随机文件名，用户不需要清理缓存即可看到新版本
 
 可以在后端环境（如：java、node）集成开发，无需实时前端编译。
 
