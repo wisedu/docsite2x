@@ -19,7 +19,7 @@
 开发时使用 Chrome 63 以上，使用 es6 的语法特性，进行开发调试。集成 Vue、Vue Router、Vuex
 
 | 支持的 JS API   | 不支持的 JS API  | 
-| --------   | -----  |
+| --------   | -----:  |
 | [ECMAScript: Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)  | ECMAScript: Symbol | 
 | [ECMAScript: Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) | ECMAScript: Collections |
 | [ECMAScript: String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String) | ECMAScript: Typed Arrays |
