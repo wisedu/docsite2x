@@ -1,6 +1,6 @@
 {   
     "plugins": [
-        "header","github","anchors","expandable-chapters","baidu-wis","-sharing","tbfed-pagefooter","sectionx","prism", "-highlight"
+        "header","github","anchors","expandable-chapters","baidu-wis","-sharing","tbfed-pagefooter","sectionx","prism", "-highlight","anchor-navigation-ex"
     ],
     "pluginsConfig": {
         "prism": {
