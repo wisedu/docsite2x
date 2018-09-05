@@ -42,9 +42,8 @@ let fields = inst.view("默认表单:form")
 
 findAll 默认会在加载模型后，自动映射动作名称后缀为 `_query` 的动作作为请求地址。
 
-如果需要更换默认的 findAll 请求地址，需要调整其 url 地址，以下给出示例：
-
-this.actions.find.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
+> 更换默认的 findAll 请求地址，需要调整其 url 地址，以下给出示例：
+> this.actions.find.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
 
 ```js
 //调整默认 findAll 的请求地址
