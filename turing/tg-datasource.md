@@ -1,13 +1,13 @@
-## DataAdapter 数据适配组件
+# DataAdapter 数据适配组件
 
 虽然下面满篇都是 DataSourceManager，但是我想告诉你的是，这是使用 DataAdapter 来操作 DataSource 的方式。
 而 DataSource 本身仅仅就是一个结构化数据。
 
 > 底层使用的是 tg-turing，[说明文档](https://github.com/wisedu/turing)
 
-### 代码调用示例
+## 功能说明
 
-#### 1、 在页面定义数据集
+### 在页面定义数据集
 定义的数据集，取页面模型中所有的定义，缓存到本地以便调用。
 参数 `hqjxjzlbgsj` 是这个模型集合中作为默认模型的名称
 参数 `pageMeta` 是模型集合，从EMAP页面模型获取
@@ -18,7 +18,7 @@ var hqjxjzlbgsj = new window["tg-turing"].DataSourceManager("hqjxjzlbgsj", pageM
 window["tg-turing"].DataSourceManager.set(hqjxjzlbgsj);
 ```
 
-#### 2、 框架运行时，初始化数据集。
+### 框架运行时，初始化数据集。
 
 这个步骤一般你不会关心，由框架代理完成
 
@@ -28,7 +28,7 @@ window["tg-turing"].DataSourceManager.ready(function() {
 })
 ```
 
-#### 3、 <span style="color:red">***</span> 业务代码获取并执行获取数据
+### <span style="color:red">***</span> 业务代码获取并执行获取数据
 
 DataSourceManager.get 方法是从本地缓存获取DataSource对象的引用，不会再次发送请求和构造对象，没有性能消耗
 
@@ -84,8 +84,10 @@ window["tg-turing"].axios.post(url, params).then(function(result){
 });
 ```
 
+## API
 
 ### Methods
+
 | 方法名称 | 说明 | 参数 |
 |---------- |-------- |---------- |
 | execute  | 异步请求数据方法 | `action对象`, `{查询参数1:1,查询参数2:2}`  |
@@ -107,6 +109,7 @@ inst.load(url, name, findParams)
 ```
 
 ### 属性
+
 属性是通过初始化后，自动生成，无需手动创建。
 以结构体来说明
 
@@ -143,6 +146,7 @@ console.log(testDS.actions)
 
 
 ### Events
+
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |
 | onLoad  | 数据加载完成时触发 | `meta`原始模型  |

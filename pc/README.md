@@ -1,4 +1,4 @@
-## [bh-iview 组件文档](/iview/)
+# [bh-iview 组件文档](/iview/)
 
 PC 组件基于 iview 组件库进行扩展，与官方的主要区别在于 table 组件支持列 slot。
 随iview官方版本更新而升级

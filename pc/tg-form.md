@@ -1,4 +1,4 @@
-## tg-form
+# tg-form
 
 该组件是弹窗中的输入项的集合，可以放置在弹窗中 或者 平铺在页面上
 
@@ -11,6 +11,8 @@
 可以根据实现组件，切换显示组件，以下为PC端的iview组件库的实现。亦或是可以切换为移动端组件库
 
 [formConnector](https://github.com/wisedu/turing/blob/master/formConnector.md)
+
+## 功能
 
 ### 2列/只读/平铺 表单
 
@@ -217,7 +219,6 @@ export default {
 ```
 
 ConnectItem 定义详见 文档接下来的章节：ConnectItem 每个xtype组件的标准属性
-
 
 
 

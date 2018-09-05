@@ -8,6 +8,15 @@
               "prismjs/themes/prism-okaidia.css"
             ]
         },
+        "anchor-navigation-ex":{
+            "mode": "pageTop",
+            "pageTop": {
+                "showLevelIcon": false,
+                "level1Icon": "fa fa-hand-o-right",
+                "level2Icon": "fa fa-hand-o-right",
+                "level3Icon": "fa fa-hand-o-right"
+            }
+        },
         "layout": {
             "headerPath" : "layouts/header.html"
         },

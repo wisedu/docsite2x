@@ -1,8 +1,8 @@
-## tg-listview
+# tg-listview
 
-### 例子
+## 代码示例
 
-#### 基本用法
+### 基本用法
 
 该组件支持三种模式：列表、栅格、平铺
 
@@ -24,7 +24,7 @@ datas 属性支持静态数据传入，与 autoReadyDataBind 属性互斥，在�
 
 ---
 
-#### 列表模式 - 文字列表
+### 列表模式 - 文字列表
 
 ![文字列表](../static/listview-list.png)
 
@@ -47,7 +47,7 @@ datas 属性支持静态数据传入，与 autoReadyDataBind 属性互斥，在�
 
 ---
 
-#### 栅格模式 - 卡片列表
+### 栅格模式 - 卡片列表
 
 ![卡片列表](../static/listview-card.png)
 
@@ -67,7 +67,7 @@ datas 属性支持静态数据传入，与 autoReadyDataBind 属性互斥，在�
 </tg-listview>
 ```
 
-#### 平铺模式 - 图标列表
+### 平铺模式 - 图标列表
 
 ![图标列表](../static/listview-icon.png)
 
@@ -102,7 +102,10 @@ datas 属性支持静态数据传入，与 autoReadyDataBind 属性互斥，在�
 }
 ```
 
+## API
+
 ### 属性
+
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|-------|---------|-------|--------|
 | datas | 静态数据 | Array | [] |  |

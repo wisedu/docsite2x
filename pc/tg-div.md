@@ -1,6 +1,6 @@
-## tg-div
+# tg-div
 
-### 例子
+## 代码示例
 
 ```html
 <tg-div></tg-div>
@@ -14,6 +14,7 @@ tg-div，具有内部自动清除浮动的功能，可以安心使用
   <tg-div class="tg-left">3</tg-div>
 </tg-div>
 ```
+## API
 
 ### 属性
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
