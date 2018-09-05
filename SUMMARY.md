@@ -20,6 +20,7 @@
   - 表单组件
     * [tg-input](mobile/input.md)
     * [tg-action-sheet](mobile/action-sheet.md)
+    * [tg-picker](mobile/tg-picker.md)
 - [卡片]()
   * [Portals Api](card/portals-api.md)
   * [Portals Dev](card/portals-dev.md)
