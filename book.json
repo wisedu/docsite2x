@@ -1,6 +1,6 @@
 {   
     "plugins": [
-        "header","github","anchors","expandable-chapters","baidu-wis","github-buttons","-sharing","tbfed-pagefooter","sectionx","prism", "-highlight"
+        "header","github","anchors","expandable-chapters","baidu-wis","-sharing","tbfed-pagefooter","sectionx","prism", "-highlight"
     ],
     "pluginsConfig": {
         "prism": {
@@ -20,14 +20,6 @@
         "baidu-wis":{
         	"token":"151eb7bb5d324da7f71a846c3ee2d62f"
         },
-        "github-buttons": {
-	      "repo": "wisedu/docsite2x",
-	      "types": [
-	        "star",
-	        "watch"
-	      ],
-	      "size": "small"
-	    },
         "tbfed-pagefooter": {
             "copyright":"问题反馈：<a href='http://res.wisedu.com' target='_blank'>http://res.wisedu.com</a>， wisedu",
             "modify_label": "该文件修订时间：",

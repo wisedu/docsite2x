@@ -16,6 +16,9 @@
   * [tg-Listview](pc/tg-listview.md)
 - [移动组件](mobile/README.md)
   * [交互设计规范](http://my.wisedu.com/edc/ID/1.SPEC/Mobile/1.Components.Component/M-设计规范2.0_2018.07.11/#g=1&p=更新日志)
+  - 表单组件
+    * [tg-input](mobile/input.md)
+    * [tg-action-sheet](mobile/action-sheet.md)
 - [卡片]()
   * [Portals Api](card/portals-api.md)
   * [Portals Dev](card/portals-dev.md)
