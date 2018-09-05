@@ -6,7 +6,7 @@
 | --------   | -----  |
 | Chrome >= 55 | Android >= 6  |
 | Safari >= 10  | iOS >= 10  |
-| Firefox >= 61 |   |
+| Firefox >= 63 |   |
 | Edge >= 13  |   |
 | Explorer >= 9  |   |
 
@@ -76,36 +76,92 @@
 
 
 
-## 工程目录结构
+## 工程目录结构 - EMAP
 
 ```
-web
-├─Branch
-│  ├─card
+web/
+├─Branch/
 │  ├─mobile.css （tgbuilder 生成）
 │  ├─mobile.js （tgbuilder 生成）
-│  ├─mobile
+│  ├─mobile/
 │  └─pc
-├─Capacity
-│  ├─card
+├─Capacity/
 │  ├─mobile.css （tgbuilder 生成）
 │  ├─mobile.js （tgbuilder 生成）
-│  ├─mobile
+│  ├─mobile/
 │  │  ├─main.js (入口文件)
-│  │  ├─components
+│  │  ├─components/
 │  │  │  ├─biz-com1
 │  │  │  └─...
-│  │  ├─pages
-│  │  │  ├─page1
+│  │  ├─pages/
+│  │  │  ├─page1/
 │  │  │  │   ├─subpage1
 │  │  │  │   └─...
 │  │  │  └─...
-│  │  └─store
+│  │  └─store/
 │  │      └─modules
-│  └─pc
-├─public
-│  └─doc_resource
+│  └─pc/
+├─public/
+│  └─doc_resource/
 │      ├─schedule-form
 │      └─smile-form
-└─static
+└─static/
+```
+
+### 入口文件 - 可由工具生成
+
+入口文件包括了对该项目中所有文件的引用，可由工具生成
+
+* Capacity/mobile.js
+* Capacity/mobile.css
+* Capacity/pc.js
+* Capacity/pc.css
+
+他们对应各自名称的目录内所有 js文件、css文件
+
+### main.js - 开发入口
+
+
+
+
+## 页面说明
+
+以文件夹并包含3个文件为完整的一个页面。名称都与文件夹名称一致，便于debug
+
+例如页面名称为page1，应创建如下格式：
+* page1/
+* page1/page1.js
+* page1/page1Impl.js
+* page1/page1.css （可选）
+
+### page1.js - 页面布局
+
+export 对象提供给 Vue 使用，具体语法参考 Vue 文档。
+
+特别注意，该文件仅编写 template属性，可配合页面设计器生成该文件代码，所以请不要在此编写任何js逻辑。 
+
+js逻辑在 Impl.js 文件中编写
+
+```js
+import impl from './page1Impl.js';
+export default {
+    template:`
+    	<div>开始的页</div>
+    `,
+    mixins:[impl]
+}
+```
+
+
+
+### page1Impl.js - 页面 js 逻辑
+
+编写规则参见 Vue 文档
+
+```js
+export default {
+    data() {
+        return {};
+    },
+};
 ```
