@@ -284,6 +284,7 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | labelWidth | 字段前的标签宽度 | Number | | 100 |
 | readonly | 只读表单 | Boolean | | false |
 | displayFieldFormat | 字典翻译列的后缀，可全局配置window["tg-turing"].defaults.displayFieldFormat | String | `_DISPLAY` | 空 |
+| validateRules.sync | 校验规则，可在初始化完成后追加自定义的规则。异步时需要写在this.$nextTick()中 | Object | {} |
 | before | 表单开头追加项 | Slot |  |  |
 | after | 表单最后追加项 | Slot |  |  |
 | 动态：字段名 | 可以替换某个字段 | Slot |  |  |
@@ -295,6 +296,7 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | validate  | 对整个表单进行校验，参数为检验完的回调，会返回一个 Boolean 表示成功与失败，支持 Promise | callback |
 | validateField  | 对部分表单字段进行校验的方法，参数1为需校验的 prop，参数2为检验完回调，返回错误信息 | callback  |
 | resetFields  | 对整个表单进行重置，将所有字段值重置为空并移除校验结果 | 无  |
+| getField  | 根据key获取字段模型，匹配不到时返回`undefeind`。异步时需要写在this.$nextTick()中 | key  |
 
 ### Events
 

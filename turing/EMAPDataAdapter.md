@@ -21,10 +21,21 @@ inst.view("grid:table");
 
 ### 动态加载页面模型
 
+由于是模型是通过load方法异步加载的，所以通过inst初始化的方法都需要写在 load 完成后。
+
 ```js
 var inst = new turing.DataAdapterFactory.create();
-inst.load("url", "T_FUNA_USER_QUERY")
-let columns = inst.view("默认列表:table")
+export default {
+    data(){
+        return {
+            columns:[]
+        }
+    },
+    async mounted(){
+        await inst.load("url", "T_FUNA_USER_QUERY");
+        this.columns = inst.view("默认列表:table");
+    }
+}
 ```
 
 ### 加载流程合并的模型
@@ -40,19 +51,38 @@ let fields = inst.view("默认表单:form")
 
 ### 获取数据 findAll
 
-findAll 默认会在加载模型后，自动映射动作名称后缀为 `_query` 的动作作为请求地址。
+findAll 默认会在加载模型后，自动映射动作名称，规则有二：
+1. 与名称匹配的模型的url地址会自动赋值给findAll的url
+2. 后缀为 `_QUERY` 的动作作为请求地址。
+
+```js
+inst.load("url", "T_FUNA_USER_QUERY")
+//T_FUNA_USER_QUERY该模型的url地址会自动映射到findAll
+```
+
 
 > 更换默认的 findAll 请求地址，需要调整其 url 地址，以下给出示例：
 > this.actions.find.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
 
 ```js
+
+var inst = new turing.DataAdapterFactory.create();
 //调整默认 findAll 的请求地址
 inst.actions["find"].url = "";
 inst.actions["find"].params = {"status":"已完成"}
-
-inst.findAll({ parentId:"00001" }).then(datas => {
-    this.rowData = datas
-});
+export default {
+    data(){
+        return {
+            columns:[]
+        }
+    },
+    async mounted(){
+        await inst.load("url", "T_FUNA_USER_QUERY");
+        this.columns = inst.view("默认列表:table");
+        let datas = await inst.findAll({ parentId:"00001" });
+        this.rowData = datas;
+    }
+}
 ```
 
 
@@ -81,4 +111,89 @@ methods: {
  *   where:{...}
  * }
  * */
+```
+
+
+## 保存数据 save
+
+save 默认会在加载模型后，自动映射动作名称后缀为 `_SAVE` 的动作作为请求地址。
+
+```js
+inst.save(this.deptData).then(result => {
+    alert("ok")
+})
+```
+
+
+### 删除数据 delete
+
+delete 默认会在加载模型后，自动映射动作名称后缀为 `_DELETE` 的动作作为请求地址。
+
+```js
+inst.delete(deptId).then(result => {
+    alert("ok")
+})
+```
+
+
+### 排序
+
+使用order方法，设置排序，该参数只在findAll方法中生效。
+
+```js
+methods: {
+    async query() {
+        inst.querySetting = inst.querySettingBuilder(this.searchValues, "Dept");
+        let datas = inst.findAll()
+        this.data5 = datas;
+    },
+    sortHandler(param) {
+        let keys = param.key.split(".")
+        if (param.order !== "normal"){
+            inst.order(keys.concat([param.order]));
+        } else {
+            inst.order(keys);
+        }
+        this.query()
+    }
+}
+```
+
+
+
+### action 默认定义
+
+```js
+actions = {
+    save:{
+        url: "",
+        method: "post",
+        name: ""
+    },
+    delete:{
+        url: "",
+        method: "post",
+        name: ""
+    },
+    find:{
+        url: "",
+        method: "post",
+        name: "",
+        params: {},
+        orders: [],
+        include: []
+    }
+}
+```
+
+### 变量参数
+
+url里面可以写{变量名}，会由params中的数据替换掉
+如：
+```js
+this.actions.delete.url = "/api/dept/{id}";
+...
+
+this.delete({id:"123"})
+
 ```
