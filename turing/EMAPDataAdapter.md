@@ -65,11 +65,7 @@ inst.load("url", "T_FUNA_USER_QUERY")
 > this.actions.findAll.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
 
 ```js
-
 var inst = new turing.DataAdapterFactory.create();
-//调整默认 findAll 的请求地址
-inst.actions["findAll"].url = "";
-inst.actions["findAll"].params = {"status":"已完成"}
 export default {
     data(){
         return {
@@ -78,6 +74,9 @@ export default {
     },
     async mounted(){
         await inst.load("url", "T_FUNA_USER_QUERY");
+        //调整默认 findAll 的请求地址
+        inst.actions["findAll"].url = "";
+        inst.actions["findAll"].params = {"status":"已完成"}
         this.columns = inst.view("默认列表:table");
         let datas = await inst.findAll({ parentId:"00001" });
         this.rowData = datas;

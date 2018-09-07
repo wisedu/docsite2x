@@ -200,7 +200,7 @@ export default {
 
 ## 局部组件 - components/
 
-局部组件，按照Vue完整的写法进行编写
+组件都写在 components/ 目录下，按照Vue完整的写法进行编写
 
 ```js
 //dutyReportHandle.js
