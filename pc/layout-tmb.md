@@ -29,21 +29,21 @@ export default {
                 menu:[{
                     name:"A",
                     icon:"ios-people",
-                    url:"http://www.baidu.com"
+                    uri:"http://www.baidu.com"
                 },{
                     name:"B",
-                    url:"#/table"
+                    uri:"#/table"
                 },{
                     name:"C",
-                    url:""
+                    uri:""
                 },{
                     name:"D",
-                    url:"",
+                    uri:"",
                     icon:"stats-bars",
                     items:[{
                         name:"DD",
                         icon:"settings",
-                        url:""
+                        uri:""
                     }]
                 }],
                 dropMenu:[{
