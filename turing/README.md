@@ -1,4 +1,4 @@
-# Turing 前端开发框架
+# Turing - EMAP 前端开发框架
 
 ## 特性
 
@@ -122,9 +122,37 @@ web/
 
 他们对应各自名称的目录内所有 js文件、css文件
 
+
 ### main.js - 开发入口
 
+主要包含以下功能：
 
+```js
+//私有路由，用于子页面跳转等。
+import route from './private-router.js';
+
+//合并公开路由，一般是根据权限过滤的一级菜单。
+var router = window.TG_MergePublicRouter(route.routes);
+
+let config = {
+    data() {
+        return {
+            //整体布局组件所需要的页头完整的参数，如logo、菜单、用户信息等
+            header: window.TG_getHeaderInfo(window.TG_CONFIG.header)
+        };
+    },
+    created() {
+    },
+    mounted() {
+
+    },
+    router
+};
+var app = new Vue(config).$mount('#page');
+//清除加载动画
+document.querySelector('#page').classList.remove('__hide')
+document.querySelector('.app-loading').classList.remove('app-loading-show')
+```
 
 
 ## 页面说明
@@ -167,4 +195,46 @@ export default {
         return {};
     },
 };
+```
+
+
+## 局部组件 - components/
+
+局部组件，按照Vue完整的写法进行编写
+
+```js
+//dutyReportHandle.js
+export default {
+  name: 'duty-report-handle',
+  template: ` <div class="container dutyReportHandle">
+        <img class="img" src='../static/assets/PC.png' /><span class="dutyReport">请进入PC端进行上报</span>
+    </div>`,
+  data() {
+    return {
+
+    };
+  }
+};
+```
+
+使用的页面使用 [Vue 局部注册](https://cn.vuejs.org/v2/guide/components-registration.html#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C)
+
+```js
+//xxxImpl.js
+import dutyReportHandle from '../../components/dutyReportHandle.js';
+export default{
+  el: '#app'
+  components: {
+    [dutyReportHandle.name]: dutyReportHandle
+  }
+}
+
+//xxx.js
+import impl from './xxxImpl.js';
+export default {
+    template:`
+    	<duty-report-handle>开始的页</duty-report-handle>
+    `,
+    mixins:[impl]
+}
 ```

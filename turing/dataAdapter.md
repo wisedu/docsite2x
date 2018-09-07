@@ -45,8 +45,8 @@ export default class extends DataAdapter {
             "查询": {
             }
         }
-        this.actions.find.url = "/api/dept";
-        this.actions.find.method = "get"
+        this.actions.findAll.url = "/api/dept";
+        this.actions.findAll.method = "get"
         this.actions.save.url = "/api/dept/save";
         this.actions.delete.url = "/api/dept/{id}";
         this.actions.delete.method = "delete"
@@ -63,7 +63,7 @@ export default class extends DataAdapter {
     }
     scdFindAll() {
         //覆盖一个findAll，一般用在新的实例上。
-        this.actions.find.url = "/api/dept/scdFindAll";
+        this.actions.findAll.url = "/api/dept/scdFindAll";
         return this.findAll().then(datas => datas === undefined ? [] : datas)
     }
 }
@@ -245,7 +245,12 @@ actions = {
         method: "post",
         name: ""
     },
-    find:{
+    findById:{
+        url: "",
+        method: "get",
+        name: ""
+    },
+    findAll:{
         url: "",
         method: "post",
         name: "",

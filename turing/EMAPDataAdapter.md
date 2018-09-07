@@ -62,14 +62,14 @@ inst.load("url", "T_FUNA_USER_QUERY")
 
 
 > 更换默认的 findAll 请求地址，需要调整其 url 地址，以下给出示例：
-> this.actions.find.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
+> this.actions.findAll.params 中可以配置固定查询参数，会与findAll函数传入的参数做合并，以函数传入参数的优先级高
 
 ```js
 
 var inst = new turing.DataAdapterFactory.create();
 //调整默认 findAll 的请求地址
-inst.actions["find"].url = "";
-inst.actions["find"].params = {"status":"已完成"}
+inst.actions["findAll"].url = "";
+inst.actions["findAll"].params = {"status":"已完成"}
 export default {
     data(){
         return {
@@ -175,7 +175,12 @@ actions = {
         method: "post",
         name: ""
     },
-    find:{
+    findById:{
+        url: "",
+        method: "get",
+        name: ""
+    },
+    findAll:{
         url: "",
         method: "post",
         name: "",
