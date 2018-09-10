@@ -138,5 +138,7 @@
 | 右浮动 | tg-right |
 | 清除浮动 | tg-clear |
 | 仅清除子节点浮动 | tg-clear-child |
+| <label style="font-size: 32px;line-height: 45px;font-family: PingFang SC;">文字<br>大小</label> | <div style="font-size: 32px;line-height: 45px;font-family: PingFang SC;">文字<br>大小</div> |
+
 
 
