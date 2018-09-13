@@ -84,7 +84,7 @@ let fields = [
 
 ## 提交表单数据
 
-### 异步提交数据
+### 异步附件提交
 
 附件需要使用异步上传组件，如：uploadfile
 
@@ -112,7 +112,7 @@ export default {
 </script>
 ```
 
-### 同步提交数据
+### 同步附件提交
 
 附件需要使用同步上传组件，如：uploadfile-sync
 

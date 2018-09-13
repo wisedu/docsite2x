@@ -8,13 +8,16 @@ turing 挂载于 window["tg-turing"] 中
 var turing = window["tg-turing"];
 ```
 
-使用 DataAdapterFactory 中默认为创建 EMAP 类型的 DataAdapter
-
 ## 初始化方式
 
-### 已有模型定义
+使用 DataAdapterFactory 中默认为创建 EMAP 类型的 DataAdapter
+
+### 静态模型定义
+
+适用于已经将模型数据缓存到页面的情况，看起来应该像这样：
 
 ```js
+var pageMeta = {"models":[{"name":"FORM_GROUP","appName":"应用FORM_GROUP","modelName":"模型FORM_GROUP","url":"http://res.wisedu.com/fe_components/mock/form_group.json","controls":[{"name":"WID","dataType":"String","caption":"请选择您要参加的招聘计划：","placeholder":"","dataSize":4,"xtype":"radiolist","readonly":false,"url":"./mock/select.json","required":false}]}]}
 var inst = new turing.DataAdapterFactory.create(pageMeta, "T_FUNA_USER_QUERY");
 inst.view("grid:table");
 ```
