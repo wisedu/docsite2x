@@ -186,7 +186,8 @@ export default {
 | datas.sync | 当前页数据 | Array, Object |  |  |
 | rowRending | 渲染行控制样式，返回className | Function |  |  |
 | dataAdapter | 数据源 | DataAdapter | | |
-| pageSize | 分页大小 | Number |  | 50 |
+| params | 执行数据查询时，带入的参数 | Object | | |
+| pager | 分页，总数大于0时显示。如果设置为null，强制隐藏 | Object |  | {size:20,index:1} |
 | autoReadyDataBind | 组件ready事件时，自动执行数据绑定 | Boolean | | false |
 
 ### Methods

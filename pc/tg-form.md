@@ -82,6 +82,72 @@ let fields = [
 </tg-form>
 ```
 
+## 提交表单数据
+
+### 异步提交数据
+
+附件需要使用异步上传组件，如：uploadfile
+
+```html
+<template>
+    <tg-form :fields="fields" v-model="formData" :column="2" :readonly="true"></tg-form>
+    <button @click="submit"></button>
+</template>
+<script>
+export default {
+    data(){
+        return {
+            fields: [{name:"attachment",caption:"附件",xtype:"uploadfile"}]
+            formData: {}
+        }
+    },
+    methods:{
+        submit(){
+            window["tg-turing"].utils.Post("后台地址", formData).then(result => {
+                console.log(result.data)
+            })
+        }
+    }
+}
+</script>
+```
+
+### 同步提交数据
+
+附件需要使用同步上传组件，如：uploadfile-sync
+
+```html
+<template>
+    <tg-form ref="form" :fields="fields" v-model="formData" :column="2" :readonly="true"></tg-form>
+    <button @click="submit"></button>
+</template>
+<script>
+export default {
+    data(){
+        return {
+            fields: [{name:"attachment",caption:"附件",xtype:"uploadfile"}]
+            formData: {}
+        }
+    },
+    methods:{
+        submit(){
+            window.$refs.form.submit("后台地址");
+        }
+    }
+}
+</script>
+```
+
+以上的 `后台地址` 是通过POST enctype=multipart/form-data 方式提交的，需要在后台接收该请求并以 multipart 方式获取参数。
+
+由于同步提交机制，需要该后台 controller 需要返回一个标准格式内容，以供前台获取结果。模板如下
+
+```html
+<html><script>parent.postMessage({key1:"value1",key2:"value2",key3:"value3"}, '*')</script></html>
+```
+
+## 高级
+
 ### 替换表单字段内容
 
 这样可以将fields模型中XSBH的字段显示替换为 sortable 的自定义组件
@@ -297,6 +363,7 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | validateField  | 对部分表单字段进行校验的方法，参数1为需校验的 prop，参数2为检验完回调，返回错误信息 | callback  |
 | resetFields  | 对整个表单进行重置，将所有字段值重置为空并移除校验结果 | 无  |
 | getField  | 根据key获取字段模型，匹配不到时返回`undefeind`。异步时需要写在this.$nextTick()中 | key  |
+| submit  | 同步表单提交，主要用于 | url  |
 
 ### Events
 
