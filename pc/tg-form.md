@@ -125,13 +125,14 @@ export default {
 export default {
     data(){
         return {
-            fields: [{name:"attachment",caption:"附件",xtype:"uploadfile"}]
+            fields: [{name:"attachment",caption:"附件",xtype:"uploadfile-sync"}]
             formData: {}
         }
     },
     methods:{
-        submit(){
-            window.$refs.form.submit("后台地址");
+        async submit(){
+            let result = await window.$refs.form.submit("后台地址");
+            console.log(result);
         }
     }
 }
