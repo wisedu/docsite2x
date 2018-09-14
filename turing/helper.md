@@ -4,9 +4,44 @@
 
 ### utils.Post
 
+该方法封装了 Axios
+
+```js
+window["tg-turing"].utils.Post("url", {key1:"value1",key2:"value2"}).then(result => {
+    console.log(result.data)
+});
+```
+
+* @param {String} url - 请求地址，可以是api中定义的名称，或者具体的url地址
+* @param {Object} data - 请求参数
+* @param {*} config - 请求配置，详见axios文档 [https://github.com/mzabriskie/axios]
+
+
 ### utils.Get
 
+```js
+window["tg-turing"].utils.Get("url", {key1:"value1",key2:"value2"}).then(results => {
+    console.log(result.data)
+})
+```
+
+ * @param {String} url - 请求地址，可以是api中定义的名称，或者具体的url地址
+ * @param {Object} data - 请求参数
+ * @param {*} config - 请求配置，详见axios文档 [https://github.com/mzabriskie/axios]；
+
+
 ### utils.Delete
+
+```js
+window["tg-turing"].utils.Delete("url", {key1:"value1",key2:"value2"}).then(results => {
+    console.log(result.data)
+})
+```
+
+ * @param {String} url - 请求地址，可以是api中定义的名称，或者具体的url地址
+ * @param {Object} data - 请求参数
+ * @param {*} config - 请求配置，详见axios文档 [https://github.com/mzabriskie/axios]；
+
 
 ### utils.getUrlParam
 
