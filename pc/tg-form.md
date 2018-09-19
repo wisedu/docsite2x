@@ -352,6 +352,7 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | readonly | 只读表单 | Boolean | | false |
 | displayFieldFormat | 字典翻译列的后缀，可全局配置window["tg-turing"].defaults.displayFieldFormat | String | `_DISPLAY` | 空 |
 | validateRules.sync | 校验规则，可在初始化完成后追加自定义的规则。异步时需要写在this.$nextTick()中 | Object | {} |
+| loaddata | 数据加载干预 | Function | | 入参：name, callback。 完成时调用 callback([{value:"",label:""}]) |
 | before | 表单开头追加项 | Slot |  |  |
 | after | 表单最后追加项 | Slot |  |  |
 | 动态：字段名 | 可以替换某个字段 | Slot |  |  |
@@ -391,6 +392,7 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | disabled | 禁用 | Boolean | | false |
 | model | 字段模型 | Object | | {} |
 | params | 对应 model.params | Object | |  |
+| loaddata | 数据加载干预 | Function | | 入参：name, callback。 完成时调用 callback([{value:"",label:""}]) |
 
 ### Events
 
