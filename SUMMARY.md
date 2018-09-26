@@ -24,3 +24,4 @@
     * [tg-picker](mobile/tg-picker.md)
 - [卡片]()
   * [Portals Api](card/portals-api.md)
+  * [Portals 内嵌卡片开发](card/portals-dev.md)
