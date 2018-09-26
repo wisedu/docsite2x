@@ -52,7 +52,7 @@ window["tg-turing"].utils.Delete("url", {key1:"value1",key2:"value2"}).then(resu
 ### utils.getUrlParam
 
 ```js
-// url = res.wisedu.com?aa=1&bb=2
+// url = http://res.wisedu.com?aa=1&bb=2
 let params = turing.utils.getUrlParam(); //获取所有url上的参数
 // 结果：params = {aa:1,bb:2}
 
@@ -63,11 +63,21 @@ let aa = turing.utils.getUrlParam("aa"); //直接获取某一个的值
  * @param {String} name [可选]] - 获取参数名称
 
 
-### utils.setFullUrl
-
 ### utils.getContextPath
 
+```js
+// http://localhost:8080/emap/sys/eetablemanage/Capacity/design.do?tgloader=pc
+let context = turing.utils.getContextPath();
+// 结果： http://localhost:8080/emap
+```
+
 ### utils.cleanProps
+
+```js
+let value = {a:1,b:1,c:1};
+let newdata = turing.utils.cleanProps(value);
+// 结果： newdata = {};
+```
 
 ### utils.toTreeData
 
@@ -139,16 +149,66 @@ var object = turing.utils.extend(true, object1, object2, objectN); //深拷贝
 
 ### 日期 date
 
+```html
+<!-- 在双花括号中 -->
+{{ brithday | date }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="brithday | date('YYYY-MM-DD')"></div>
+```
+
+* 参数[可选] - 日期格式：YYYY-MM-DD 或其他格式，参考 [momentjs 文档](http://momentjs.cn/docs/#/parsing/string-format/)
+
 ### 大写 uppercase
+
+```html
+<!-- 在双花括号中 -->
+{{ company_name | uppercase }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="company_name | uppercase"></div>
+```
 
 ### 小写 lowercase
 
+```html
+<!-- 在双花括号中 -->
+{{ my_name | lowercase }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="my_name | lowercase"></div>
+```
+
 ### 货币 currency
 
-### 百分数 percent
+```html
+<!-- 在双花括号中 -->
+{{ amount | currency }}
+
+<!-- 在 `v-bind` 中 -->
+<div v-bind:id="amount | currency('$')"></div>
+```
+
+* 参数[可选] - symbol： 货币符号，默认值：'￥'
+* 参数[可选] - format： 值与符号的先后顺序以及其中的格式，默认值：'%s%v'。  %s = symbol, %v = value/number
+* 参数[可选] - precision： 小数位数，默认值：2
+* 参数[可选] - thousand： 千分位符号，默认值：','
+* 参数[可选] - decimal： 小数符号，默认值：'.'
 
 
 ## 指令
 
-### 控件权限过滤 tg-funckey
+### 控件权限过滤 
+
+在不具备权限的情况，把当前元素彻底remove掉。
+
+该指令依赖数据源：
+
+```js
+window.sessionStorage.setItem("tg-authkeys", "func1,func2,func2,func2")
+```
+
+```html
+<div tg-funckey="'func1'"><button>审核</button></div>
+```
 
