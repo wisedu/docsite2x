@@ -52,7 +52,7 @@ let fields = inst.view("默认表单:form")
 
 ## 数据查询
 
-### 执行自定义动作
+### 执行EMAP动作
 
 ```js
 var inst = new turing.DataAdapterFactory.create();
@@ -61,7 +61,7 @@ export default {
         return {}
     },
     async mounted(){
-        await inst.load("url", "T_FUNA_USER_QUERY")
+        await inst.load("页面模型地址", "T_FUNA_USER_QUERY")
         let datas = await inst.execute("动作别名", {param1:1,param2:2});
         this.rowData = datas;
     }
