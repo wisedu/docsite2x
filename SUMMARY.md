@@ -6,7 +6,6 @@
   * [工具](turing/helper.md)
   * [DataAdapter](turing/dataAdapter.md)
   * [FormConnector](turing/formConnector.md)
-  * [GridBuilder](turing/gridBuilder.md)
   * [tg-Datasource](turing/tg-datasource.md)
   * [tg-Databind](turing/tg-databind.md)
 - [PC 组件](pc/README.md)
