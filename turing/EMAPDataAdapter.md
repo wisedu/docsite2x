@@ -61,7 +61,9 @@ export default {
         return {}
     },
     async mounted(){
+        //页面模型地址 = /cygl.do
         await inst.load("页面模型地址", "T_FUNA_USER_QUERY")
+        //动作别名 = queryFormAction
         let datas = await inst.execute("动作别名", {param1:1,param2:2});
         this.rowData = datas;
     }
