@@ -134,25 +134,39 @@ PA.menu.setLevel(data);
 
 
 
+### js模板
 
-
-
-### 卡片与首页交互
-
-1. 卡片扩展信息消息
 ```
-window['tg-turing'].utils.sendMessageToParent({
-    type: 'card-header-extend-show',
-    data: {
-        content: '要显示的扩展信息内容'
-})
+/**
+ * 在页面加载时触发
+ * @param data
+ * @param data.position {object} 被点击的功能块的位置信息（top，bottom，left，right，width，height）
+ * @param data.target {object} 被点击的功能块dom对象
+ * @private
+ */
+function onloaded(data) {
+
+}
+
+/**
+ * 每次点击该应用所配置的触发功能块时，都会执行
+ * @param data
+ * @param data.position {object} 被点击的功能块的位置信息（top，bottom，left，right，width，height）
+ * @param data.target {object} 被点击的功能块dom对象
+ * @private
+ */
+function init(data) {
+
+}
+
+/**
+ * 当点击并非该应用所配置的触发功能块时，都会执行
+ * @param data
+ * @private
+ */
+function destroy(data) {
+
+}
 ```
 
-2. 卡片高度重置消息
-```
-window['tg-turing'].utils.sendMessageToParent({
-    type: 'portals-card-height-reset',
-    data: {
-        height: '要重置的卡片高度'
-})
-```
+
