@@ -6,15 +6,13 @@
 
 ###### ajax
 
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-|       url      |       string     |       是      |      请求地址      | |
-|       data  |       object     |       否      |      请求数据      | |
-|       method |       string |       否  |   请求方式，get/post      | post |
-
 示例：
 ```
-PAUtils.ajax(url, data, method).then(function(_res){
+PA.utils.ajax({
+    url: '地址',
+    type: '请求类型，默认post',
+    data: {}
+}).then(function(_res){
     //逻辑操作
 })
 ```
@@ -24,153 +22,151 @@ PAUtils.ajax(url, data, method).then(function(_res){
 
 示例：
 ```
-var guid = PAUtils.createGuid();
+var guid = PA.utils.newGuid();
+```
+
+
+###### 获取节点位置和宽高信息
+```
+//el为原生dom节点
+var position = PA.utils.getElementPosition(el)
+```
+
+
+###### 数组转对象
+```
+//arr，要转换的数组
+//field，以数组中其中一个字段的值作为对象的key
+var obj = PA.utils.arrToObj(arr, field)
+```
+
+
+###### 在新页面打开一个应用
+```
+PA.app.open({
+    url: '必填，应用地址',
+    pageId: '可选，页面id',
+    appId: '可选，应用id',
+    stringId: '可选，应用名称对应的字符串id',
+    menuSourceId: '可选，应用对应的菜单源id',
+    menuItemGuid: '可选，应用对应的菜单节点id'
+})
+```
+
+
+###### 收藏应用
+```
+PA.app.favorite({
+    favorite: '必填，true为执行收藏动作，false为执行取消收藏动作',
+    url: '必填，应用地址',
+    pageId: '可选，页面id',
+    appId: '必填，应用id',
+    stringId: '可选，应用名称对应的字符串id',
+    menuSourceId: '可选，应用对应的菜单源id',
+    menuItemGuid: '可选，应用对应的菜单节点id'
+}).then(function(_res){
+    //收藏结束后的操作
+})
+```
+
+
+###### 获取首页缓存数据
+```
+//type，数据类型，favorite（收藏），recently（最近使用），menu（菜单）
+var data = PA.data.getExtend(type);
 ```
 
 
 
-#### 下面的dom操作，只支持原生dom节点
-###### 插入dom元素,支持字符串和dom节点插入
-
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| container | dom | 是 |  要插入的容器 | |
-| node | dom/html | 是 |  要添加的元素 | |
-
-示例：
+###### 获取首页信息
 ```
-var container = document.querySelector('#xxx');
-var html = '<div></div>';
-PADom.append(container, html);
-```
-
-
-###### 在指定的dom元素之前，插入新的元素
-
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  当前元素 | |
-| newNode | dom/string | 是 |  新的节点 | |
-
-示例：
-```
-var node = document.querySelector('#xxx');
-var html = '<div></div>';
-PADom.before(node, html);
+var info = PA.data.getPageInfo();
 ```
 
 
 
-###### 删除dom节点
-
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  要删除的节点 | |
-
-示例：
+###### 根据stringId获取对应的语言内容
 ```
-var node = document.querySelector('#xxx');
-PADom.remove(node, html);
-```
-
-
-###### 查找最近找到的一个父节点,会已当前元素为起始匹配元素
-
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  起始节点 | |
-| selector | string | 是 |  要匹配的css选择器，目前只能单独使用id，样式类，属性进行匹配 | |
-
-示例：
-```
-var node = document.querySelector('#xxx');
-var dom = PADom.append(node, '.xxx');
+var title = PA.data.getLanguageContentById(stringId)
 ```
 
 
 
-###### 判断节点是否存在该样式类
+###### 移除菜单中没有子节点的目录
 
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  要判断的节点 | |
-| className | string | 是 |  样式类名 | |
-
-示例：
 ```
-var hasClass = PADom.append(node, 'xxx');
+PA.menu.removeEmpty(data);
 ```
 
 
 
+###### 移除菜单中不可用的数据
 
-###### 给元素添加样式类
-
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  要添加的节点 | |
-| className | string | 是 |  样式类名 | |
-
-示例：
 ```
-var node = document.querySelector('#xxx');
-PADom.addClass(node, 'xxx');
+PA.menu.removeNotCanUse(data);
 ```
 
 
 
-###### 删除元素样式类
+###### 移除菜单中的空目录和不可用的数据
 
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  要删除的节点 | |
-| className | string | 是 |  样式类名 | |
-
-示例：
 ```
-var node = document.querySelector('#xxx');
-PADom.removeClass(node, 'xxx');
+PA.menu.removeEmptyAndNotCanUse(data);
 ```
 
 
 
-###### 元素样式类切换
+###### 根据菜单父节点是否可用的权限，检查和重置子节点的可用权限
 
-|       参数      |       类型     |       必填      |      说明      |      默认值      |
-|:--------------:|:--------------:|:--------------:|:--------------|:--------------:|
-| node | dom | 是 |  要处理的节点 | |
-| className | string | 是 |  样式类名 | |
-
-示例：
 ```
-var node = document.querySelector('#xxx');
-PADom.toggleClass(node, 'xxx');
+PA.menu.checkAndResetChildCanUse(data);
+```
+
+
+
+###### 给菜单中的每个节点添加层级属性
+
+```
+PA.menu.setLevel(data);
 ```
 
 
 
 
 
+### js模板
 
-
-
-### 卡片与首页交互
-
-1. 卡片给首页发送消息
 ```
-parent.postMessage({
-    type: "发送的消息名称",
-    data: {} //要发送的数据
-},'/');
+/**
+ * 在页面加载时触发
+ * @param data
+ * @param data.position {object} 被点击的功能块的位置信息（top，bottom，left，right，width，height）
+ * @param data.target {object} 被点击的功能块dom对象
+ * @private
+ */
+function onloaded(data) {
+
+}
+
+/**
+ * 每次点击该应用所配置的触发功能块时，都会执行
+ * @param data
+ * @param data.position {object} 被点击的功能块的位置信息（top，bottom，left，right，width，height）
+ * @param data.target {object} 被点击的功能块dom对象
+ * @private
+ */
+function init(data) {
+
+}
+
+/**
+ * 当点击并非该应用所配置的触发功能块时，都会执行
+ * @param data
+ * @private
+ */
+function destroy(data) {
+
+}
 ```
 
-2. 卡片扩展信息消息
-```
-parent.postMessage({
-	type: 'card-header-extend-show',
-	data: {
-	    href: window.location.href,
-	    content: '要显示的扩展信息内容'
-	}
-},'/');
-```
+

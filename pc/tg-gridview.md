@@ -204,6 +204,8 @@ export default {
 | on-highlight  | 单选行触发 | 当前选中行, 之前选中行  |
 | on-select-all  | 全选触发 | 已选行集合  |
 | on-selection-change  | 多选checkbox触发 | 已选行集合  |
+| ready  | 组件加载完成，主要用于手动做数据绑定 | 组件实例 inst  |
+| data-loaded  | 数据加载完成 | datas  |
 
 
 ## searcher
