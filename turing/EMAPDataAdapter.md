@@ -12,7 +12,7 @@ var turing = window["tg-turing"];
 
 使用 DataAdapterFactory 中默认为创建 EMAP 类型的 DataAdapter
 
-### 静态模型定义
+### 加载静态模型定义
 
 适用于已经将模型数据缓存到页面的情况，看起来应该像这样：
 
@@ -22,7 +22,7 @@ var inst = new turing.DataAdapterFactory.create(pageMeta, "T_FUNA_USER_QUERY");
 inst.view("grid:table");
 ```
 
-### 动态加载页面模型
+### 加载动态页面模型
 
 由于是模型是通过load方法异步加载的，所以通过inst初始化的方法都需要写在 load 完成后。
 
@@ -51,6 +51,23 @@ let fields = inst.view("默认表单:form")
 
 
 ## 数据查询
+
+### 执行自定义动作
+
+```js
+var inst = new turing.DataAdapterFactory.create();
+export default {
+    data(){
+        return {}
+    },
+    async mounted(){
+        await inst.load("url", "T_FUNA_USER_QUERY")
+        let datas = await inst.execute("动作别名", {param1:1,param2:2});
+        this.rowData = datas;
+    }
+}
+
+```
 
 ### 获取数据 findAll
 
