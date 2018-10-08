@@ -163,17 +163,17 @@ var object = turing.utils.extend(true, object1, object2, objectN); //深拷贝
 
 ```html
 <!-- 在双花括号中 -->
-{{ company_name | uppercase }}
+{{ company_name }}
 
 <!-- 在 `v-bind` 中 -->
-<div v-bind:id="company_name | uppercase"></div>
+<div v-bind:id="company_name | uppercase "></div>
 ```
 
 ### 小写 lowercase
 
 ```html
 <!-- 在双花括号中 -->
-{{ my_name | lowercase }}
+{{ my_name }}
 
 <!-- 在 `v-bind` 中 -->
 <div v-bind:id="my_name | lowercase"></div>
@@ -183,7 +183,7 @@ var object = turing.utils.extend(true, object1, object2, objectN); //深拷贝
 
 ```html
 <!-- 在双花括号中 -->
-{{ amount | currency }}
+{{ amount }}
 
 <!-- 在 `v-bind` 中 -->
 <div v-bind:id="amount | currency('$')"></div>
