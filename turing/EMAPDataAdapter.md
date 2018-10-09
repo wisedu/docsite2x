@@ -1,4 +1,4 @@
-# EMAP DataAdapter
+# DataAdapter for EMAP
 
 与 EMAP 后端模型对接的 DataAdapter
 

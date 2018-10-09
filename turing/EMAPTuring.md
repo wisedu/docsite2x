@@ -1,4 +1,4 @@
-# Turing - EMAP 前端开发框架
+# Turing for EMAP 前端开发框架
 
 ## 特性
 
