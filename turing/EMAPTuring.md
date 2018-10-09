@@ -83,6 +83,10 @@
 
 ```
 web/
+├─Adjustment/
+│  ├─mobile/
+│  │  ├─index.js (ES5语法)
+│  └─pc/
 ├─Branch/
 │  ├─mobile.css （tgbuilder 生成）
 │  ├─mobile.js （tgbuilder 生成）
@@ -110,6 +114,50 @@ web/
 │      └─smile-form
 └─static/
 ```
+
+
+### Capacity & Branch & Adjustment
+
+与EMAP的合并策略一致
+
+对原有产品覆盖，包名： 产品文件夹名 + $A。还可以有 $B、$C 等
+
+覆盖原则为，项目中 同路径 且 同名的文件 会根据优先级覆盖，优先级： $A、$B、$C ...
+
+* Capacity 为产品源码目录。产品所有功能都该目录下开发。定制包中如果有对于 Capacity 文件夹覆盖，则判定为C级定制。产品不可升级。
+* Branch 为定制分支功能源码目录。打包过程中，文件参与打包。定制包中对 Branch 文件夹覆盖，判定为B级定制，产品可升级。
+* Adjustment 为产品扩展目录。该文件夹下的代码允许被动态替换，所以必须使用ES5语法
+
+
+标识为 turingBoot 的 script标签
+
+```html
+<script id="turingBoot" src="http://res.wisedu.com/fe_components/turing-form/turing_loader_Capacity.js" backup-source></script>
+```
+
+Branch 入口文件（如果需要）
+
+```html
+<link rel="stylesheet" href="../Branch/mobileBranch.min.css" backup-href="../Branch/mobile.css">
+<script src="../Branch/mobileBranch.min.js" backup-type="module" backup-src="../Branch/mobile.js"></script>
+```
+
+Adjustment 入口（如果需要）
+
+```html
+<script src='/oadx2_71/sys/newoaydapp/Adjustment/mobile/index.js'></script>
+```
+
+完整的示例如下：
+
+```html
+<script src='/oadx2_71/sys/newoaydapp/Adjustment/mobile/index.js'></script>
+<link rel="stylesheet" href="../Branch/mobileBranch.min.css" backup-href="../Branch/mobile.css">
+<script src="../Branch/mobileBranch.min.js" backup-type="module" backup-src="../Branch/mobile.js"></script>
+<script type="text/javascript" src="http://res.wisedu.com/fe_components/turing-form/wisedu-vue.mobile.min.js"></script>
+<script id="turingBoot" src="http://res.wisedu.com/fe_components/turing-form/turing_loader_Capacity.js" backup-source></script>
+```
+
 
 ### 入口文件 - 可由工具生成
 
