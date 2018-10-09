@@ -2,7 +2,7 @@
 
 - [样式](css/css-utils.md)
 - [Turing 框架](turing/README.md)
-  * [EMAP Turing](turing/EMAPTuring.md)
+  * [EMAP Turing 框架](turing/EMAPTuring.md)
   * [EMAP DataAdapter](turing/EMAPDataAdapter.md)
   * [工具](turing/helper.md)
   * [DataAdapter](turing/dataAdapter.md)

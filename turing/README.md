@@ -88,6 +88,7 @@ web/
 ├─mobile.js （tgbuilder 生成）
 ├─mobile/
 │  ├─main.js (入口文件)
+│  ├─private-router.js
 │  ├─components/
 │  │  ├─biz-com1
 │  │  └─...
@@ -128,28 +129,44 @@ web/
 import route from './private-router.js';
 
 //合并公开路由，一般是根据权限过滤的一级菜单。
-var router = window.TG_MergePublicRouter(route.routes);
-
+var router = route.routes;
 let config = {
     data() {
-        return {
-            //整体布局组件所需要的页头完整的参数，如logo、菜单、用户信息等
-            header: window.TG_getHeaderInfo(window.TG_CONFIG.header)
-        };
+        return {};
     },
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     router
 };
 var app = new Vue(config).$mount('#page');
-//清除加载动画
-document.querySelector('#page').classList.remove('__hide')
-document.querySelector('.app-loading').classList.remove('app-loading-show')
 ```
 
+### private-router.js - 路由清单
+
+结构参考 Vue Router
+
+```js
+import queryFiles from './pages/query/files/files.js';
+import queryFileDetail from './pages/query/files/fileDetail.js';
+import queryFileReply from './pages/query/files/fileReply.js';
+
+export default {
+    routes: [{
+        path: '/xxwj',
+        name: 'xxwj',
+        component: queryFiles,
+        children: [{
+            path: 'fileDetail',
+            name: 'xxwjDetail',
+            component: queryFileDetail
+        }, {
+            path: 'fileReply',
+            name: 'xxwjReply',
+            component: queryFileReply
+        }]
+    }]
+}
+```
 
 ## 页面说明
 

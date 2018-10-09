@@ -97,6 +97,7 @@ web/
 │  ├─mobile.js （tgbuilder 生成）
 │  ├─mobile/
 │  │  ├─main.js (入口文件)
+│  │  ├─private-router.js
 │  │  ├─components/
 │  │  │  ├─biz-com1
 │  │  │  └─...
@@ -159,6 +160,15 @@ Adjustment 入口（如果需要）
 ```
 
 
+### turing_loader_Capacity.js 作用
+
+1. 页面加载动画
+2. 合并服务端返回的有权访问的路由信息
+3. 主题色切换
+4. 开发时态与运行时态 js 切换加载
+5. 加载了 EMAP 特征的实现
+
+
 ### 入口文件 - 可由工具生成
 
 入口文件包括了对该项目中所有文件的引用，可由工具生成
@@ -203,6 +213,32 @@ document.querySelector('#page').classList.remove('__hide')
 document.querySelector('.app-loading').classList.remove('app-loading-show')
 ```
 
+### private-router.js - 路由清单
+
+结构参考 Vue Router
+
+```js
+import queryFiles from './pages/query/files/files.js';
+import queryFileDetail from './pages/query/files/fileDetail.js';
+import queryFileReply from './pages/query/files/fileReply.js';
+
+export default {
+    routes: [{
+        path: '/xxwj',
+        name: 'xxwj',
+        component: queryFiles,
+        children: [{
+            path: 'fileDetail',
+            name: 'xxwjDetail',
+            component: queryFileDetail
+        }, {
+            path: 'fileReply',
+            name: 'xxwjReply',
+            component: queryFileReply
+        }]
+    }]
+}
+```
 
 ## 页面说明
 
