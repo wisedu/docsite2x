@@ -1,4 +1,4 @@
-# Turing 前端开发框架
+# Turing - EMAP 前端开发框架
 
 ## 特性
 
@@ -64,10 +64,10 @@
 
 ```
 --windows x64
-./tgbuilder.exe d:\work\project1\mobile
+./tgbuilder.exe compile
 
 --linux / macOS
-./tgbuilder compile ./project1/mobile
+./tgbuilder compile
 ```
 
 
@@ -79,41 +79,46 @@
 
 
 
-## 工程目录结构
+## 工程目录结构 - EMAP
 
 ```
 web/
-├─mobile.html （JSP或者是其他入口页面） 
-├─mobile.css （tgbuilder 生成）
-├─mobile.js （tgbuilder 生成）
-├─mobile/
-│  ├─main.js (入口文件)
-│  ├─components/
-│  │  ├─biz-com1
-│  │  └─...
-│  ├─pages/
-│  │  ├─page1/
-│  │  │   ├─subpage1
-│  │  │   └─...
-│  │  └─...
-│  └─store/
-│      └─modules
-├─pc.html （JSP或者是其他入口页面） 
-├─pc.css （tgbuilder 生成）
-├─pc.js （tgbuilder 生成）
-├─pc/
-│  └─...
-└─public/
+├─Branch/
+│  ├─mobile.css （tgbuilder 生成）
+│  ├─mobile.js （tgbuilder 生成）
+│  ├─mobile/
+│  └─pc
+├─Capacity/
+│  ├─mobile.css （tgbuilder 生成）
+│  ├─mobile.js （tgbuilder 生成）
+│  ├─mobile/
+│  │  ├─main.js (入口文件)
+│  │  ├─components/
+│  │  │  ├─biz-com1
+│  │  │  └─...
+│  │  ├─pages/
+│  │  │  ├─page1/
+│  │  │  │   ├─subpage1
+│  │  │  │   └─...
+│  │  │  └─...
+│  │  └─store/
+│  │      └─modules
+│  └─pc/
+├─public/
+│  └─doc_resource/
+│      ├─schedule-form
+│      └─smile-form
+└─static/
 ```
 
 ### 入口文件 - 可由工具生成
 
 入口文件包括了对该项目中所有文件的引用，可由工具生成
 
-* /mobile.js
-* /mobile.css
-* /pc.js
-* /pc.css
+* Capacity/mobile.js
+* Capacity/mobile.css
+* Capacity/pc.js
+* Capacity/pc.css
 
 他们对应各自名称的目录内所有 js文件、css文件
 
