@@ -1,4 +1,4 @@
-# Turing 前端开发框架
+# Turing for EMAP 前端开发框架
 
 ## 特性
 
@@ -64,10 +64,10 @@
 
 ```
 --windows x64
-./tgbuilder.exe d:\work\project1\mobile
+./tgbuilder.exe compile
 
 --linux / macOS
-./tgbuilder compile ./project1/mobile
+./tgbuilder compile
 ```
 
 
@@ -79,42 +79,104 @@
 
 
 
-## 工程目录结构
+## 工程目录结构 - EMAP
 
 ```
 web/
-├─mobile.html （JSP或者是其他入口页面） 
-├─mobile.css （tgbuilder 生成）
-├─mobile.js （tgbuilder 生成）
-├─mobile/
-│  ├─main.js (入口文件)
-│  ├─private-router.js
-│  ├─components/
-│  │  ├─biz-com1
-│  │  └─...
-│  ├─pages/
-│  │  ├─page1/
-│  │  │   ├─subpage1
-│  │  │   └─...
-│  │  └─...
-│  └─store/
-│      └─modules
-├─pc.html （JSP或者是其他入口页面） 
-├─pc.css （tgbuilder 生成）
-├─pc.js （tgbuilder 生成）
-├─pc/
-│  └─...
-└─public/
+├─Adjustment/
+│  ├─mobile/
+│  │  ├─index.js (ES5语法)
+│  └─pc/
+├─Branch/
+│  ├─mobile.css （tgbuilder 生成）
+│  ├─mobile.js （tgbuilder 生成）
+│  ├─mobile/
+│  └─pc
+├─Capacity/
+│  ├─mobile.css （tgbuilder 生成）
+│  ├─mobile.js （tgbuilder 生成）
+│  ├─mobile/
+│  │  ├─main.js (入口文件)
+│  │  ├─private-router.js
+│  │  ├─components/
+│  │  │  ├─biz-com1
+│  │  │  └─...
+│  │  ├─pages/
+│  │  │  ├─page1/
+│  │  │  │   ├─subpage1
+│  │  │  │   └─...
+│  │  │  └─...
+│  │  └─store/
+│  │      └─modules
+│  └─pc/
+├─public/
+│  └─doc_resource/
+│      ├─schedule-form
+│      └─smile-form
+└─static/
 ```
+
+
+### Capacity & Branch & Adjustment
+
+与EMAP的合并策略一致
+
+对原有产品覆盖，包名： 产品文件夹名 + $A。还可以有 $B、$C 等
+
+覆盖原则为，项目中 同路径 且 同名的文件 会根据优先级覆盖，优先级： $A、$B、$C ...
+
+* Capacity 为产品源码目录。产品所有功能都该目录下开发。定制包中如果有对于 Capacity 文件夹覆盖，则判定为C级定制。产品不可升级。
+* Branch 为定制分支功能源码目录。打包过程中，文件参与打包。定制包中对 Branch 文件夹覆盖，判定为B级定制，产品可升级。
+* Adjustment 为产品扩展目录。该文件夹下的代码允许被动态替换，所以必须使用ES5语法
+
+
+标识为 turingBoot 的 script标签
+
+```html
+<script id="turingBoot" src="http://res.wisedu.com/fe_components/turing-form/turing_loader_Capacity.js" backup-source></script>
+```
+
+Branch 入口文件（如果需要）
+
+```html
+<link rel="stylesheet" href="../Branch/mobileBranch.min.css" backup-href="../Branch/mobile.css">
+<script src="../Branch/mobileBranch.min.js" backup-type="module" backup-src="../Branch/mobile.js"></script>
+```
+
+Adjustment 入口（如果需要）
+
+```html
+<script src='/oadx2_71/sys/newoaydapp/Adjustment/mobile/index.js'></script>
+```
+
+完整的示例如下：
+
+```html
+<script src='/oadx2_71/sys/newoaydapp/Adjustment/mobile/index.js'></script>
+<link rel="stylesheet" href="../Branch/mobileBranch.min.css" backup-href="../Branch/mobile.css">
+<script src="../Branch/mobileBranch.min.js" backup-type="module" backup-src="../Branch/mobile.js"></script>
+<script type="text/javascript" src="http://res.wisedu.com/fe_components/turing-form/wisedu-vue.mobile.min.js"></script>
+<script id="turingBoot" src="http://res.wisedu.com/fe_components/turing-form/turing_loader_Capacity.js" backup-source></script>
+```
+
+
+### turing_loader_Capacity.js 作用
+
+1. 页面加载动画
+2. 合并服务端返回的有权访问的路由信息
+3. 主题色切换
+4. 开发时态与运行时态 js 切换加载
+5. 加载了 EMAP 特征的实现
+
 
 ### 入口文件 - 可由工具生成
 
 入口文件包括了对该项目中所有文件的引用，可由工具生成
 
-* /mobile.js
-* /mobile.css
-* /pc.js
-* /pc.css
+* Capacity/mobile.js
+* Capacity/mobile.css
+* Capacity/pc.js
+* Capacity/pc.css
 
 他们对应各自名称的目录内所有 js文件、css文件
 
@@ -129,16 +191,26 @@ web/
 import route from './private-router.js';
 
 //合并公开路由，一般是根据权限过滤的一级菜单。
-var router = route.routes;
+var router = window.TG_MergePublicRouter(route.routes);
+
 let config = {
     data() {
-        return {};
+        return {
+            //整体布局组件所需要的页头完整的参数，如logo、菜单、用户信息等
+            header: window.TG_getHeaderInfo(window.TG_CONFIG.header)
+        };
     },
-    created() {},
-    mounted() {},
+    created() {
+    },
+    mounted() {
+
+    },
     router
 };
 var app = new Vue(config).$mount('#page');
+//清除加载动画
+document.querySelector('#page').classList.remove('__hide')
+document.querySelector('.app-loading').classList.remove('app-loading-show')
 ```
 
 ### private-router.js - 路由清单
