@@ -381,17 +381,19 @@ format：日期、数字、金额，或字符串格式化，因效率一般通�
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|-------|---------|-------|--------|
 | name | 字段名 | String | | 必填 |
+| caption | 显示文字 | String | 空 |
 | xtype | 显示组件类型 | String | | static |
 | value | 字段值 | Object |  | null |
 | display | 字段显示文本。select等字典型组件会显示文本 | Object |  | null |
 | placeholder | 文本占位符 | String | |  |
 | readonly | 字段内容只读 | Boolean | | false |
 | options | 可选项 | Array<label:String, value:String> |  | 空 |
-| formReadonly | 只读表单 | Boolean | | false |
+| formReadonly | 表单整体只读 | Boolean | | false |
 | required | 必填 | Boolean | | false |
 | disabled | 禁用 | Boolean | | false |
 | model | 字段模型 | Object | | {} |
-| params | 对应 model.params | Object | |  |
+| fullrow | 占满一行 | Boolean | false |
+| params | 需要透传给组件的个性化参数 | Object | |  |
 | loaddata | 数据加载干预 | Function | | 入参：name, callback。 完成时调用 callback([{value:"",label:""}]) |
 
 ### Events
