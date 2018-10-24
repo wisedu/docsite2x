@@ -1,5 +1,7 @@
 # Turing 前端开发框架
 
+[github地址](https://github.com/wisedu/turing)
+
 ## 特性
 
 ### 浏览器引擎支持范围
