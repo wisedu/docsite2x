@@ -1,6 +1,8 @@
 # Turing 前端开发框架
 
-[github地址](https://github.com/wisedu/turing)
+NPM 包安装请转到 [github地址](https://github.com/wisedu/turing)
+
+注：其中只包含 数据适配器、模型驱动组件、工具。
 
 ## 特性
 
