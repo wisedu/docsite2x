@@ -1,5 +1,9 @@
 # Turing 前端开发框架
 
+NPM 包安装请转到 [github地址](https://github.com/wisedu/turing)
+
+注：其中只包含 数据适配器、模型驱动组件、工具。
+
 ## 特性
 
 ### 浏览器引擎支持范围
@@ -26,8 +30,10 @@
 | [ECMAScript: Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)  | ECMAScript: Symbol | 
 | [ECMAScript: Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) | ECMAScript: Collections |
 | [ECMAScript: String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String) | ECMAScript: Typed Arrays |
-| [ECMAScript: Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) | DOM API * |
-| [ECMAScript: Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)  | CSS功能 * |
+| [ECMAScript: Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) |  |
+| [ECMAScript: Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)  |  |
+| DOMTokenlist / classList / relList | DOM API * |
+| requestAnimationFrame / cancelAnimationFrame | CSS功能 * |
 
 *低版本浏览器本身不支持
 
