@@ -2,6 +2,7 @@
 
 高性能可编辑表格，底层基于 Canvas 技术，仅绘制可视区域内的元素，达到 百万行 * 上千列数据，显示流畅的效果
 
+该组件底层是基于 [fin-hypergrid](https://github.com/fin-hypergrid/core)  [官方教程](https://fin-hypergrid.github.io/tutorial/?p=2)
 
 ## 功能
 
@@ -91,7 +92,7 @@
 ```
 
 
-## API
+## 原生组件 API
 
 ### Methods
 
@@ -139,3 +140,37 @@ inst.onEditorLoadData = function(model, value, callback) {
 | caption | 显示文字 | String | 空 |
 | xtype | 显示控件类型 | Enum | text |
 | code | 用于字典字段对应的code字段名 | String | 空 |
+
+### Events
+
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| fin-editor-data-change  | 数据更改后事件 | event  |
+| fin-click  | 单元格点击 | event |
+| fin-row-header-clicked  | 整行点击 | event |
+| fin-grid-rendered  | 表格渲染完成 | event |
+
+
+```js
+this.inst.grid.addEventListener('fin-editor-data-change', event => {
+    let name = event.detail.input.column.schema.name;
+    let newValue = event.detail.newValue;
+    let oldValue = event.detail.oldValue;
+    let schema = event.detail.input.column.schema;
+    let row = event.detail.input.event.dataRow;
+    let index = event.detail.input.event.dataCell.y;
+});
+this.inst.grid.addEventListener('fin-click', event => {
+    let row = event.detail.row;
+    let rowIndex = event.detail.dataCell.y;
+    this.activedIndex = rowIndex;
+});
+this.inst.grid.addEventListener('fin-row-header-clicked', event => {
+    let row = event.detail.row;
+    let rowIndex = event.detail.dataCell.y;
+    this.activedIndex = rowIndex;
+});
+this.inst.grid.addEventListener('fin-grid-rendered', event => {
+    
+});
+```
