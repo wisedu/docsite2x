@@ -25,12 +25,12 @@
   * [tg-checkbox](mobile/checkbox.md)
   * [tg-checkbox-group](mobile/checkbox-group.md)
   * [tg-input](mobile/input.md)
-  * [tg-muti-picker](mobile/muti-picker.md)
+
   * [tg-picker](mobile/picker.md)
   * [tg-popup](mobile/popup.md)
   * [tg-progress](mobile/progress.md)
   * [tg-search](mobile/search.md)
-  * [tg-segment-picker](mobile/segment-picker.md)
+
   * [tg-stepper](mobile/stepper.md)
   * [tg-steps](mobile/steps.md)
   * [tg-switch](mobile/switch.md)

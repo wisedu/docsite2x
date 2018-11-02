@@ -82,7 +82,7 @@ data() {
 ```
 ### 初始化值 (default-value)
 ![禁用](../static/mobile/picker/picker_defaultValue.png)
-> default-value使用场景： 当数据源来初始化为空（`[]`）,在onClick事件触发时异步获取。在事件未触发前，通过初始化数据 `v-model` 中给出的 `value` 值无法获取到对应的 `text` 时,可传入 `default-value` (即数据源中对应的 `text`)。 当数据源存在时，展示值以 `v-model` 值为准
+> default-value使用场景： 当数据源初始化为空（`[]`）,在onClick事件触发时异步获取。在事件未触发前，通过初始化数据 `v-model` 中给出的 `value` 值无法获取到对应的 `text` 时,可传入 `default-value` (即数据源中对应的 `text`)。 当数据源存在时，展示值以 `v-model` 值为准
 
 ```html
 <tg-picker
