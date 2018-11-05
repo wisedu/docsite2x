@@ -23,6 +23,8 @@
 </tg-gridview>
 ```
 
+静态模型加载
+
 ```js
 (function (exports, turing) {
 	var inst = new turing.DataAdapterFactory.create(pageMeta, "T_FUNA_USER_QUERY");
@@ -34,7 +36,6 @@
 			return {
 				da:inst,
 				columns: columns,
-				fields: inst.view("form:form"),
 				searcher: {
 					name:"search",
 					column:3,
@@ -50,6 +51,40 @@
 })(window.turingform, window["tg-turing"]);
 
 ```
+
+动态模型加载
+
+```js
+(function (exports, turing) {
+	var inst = new turing.DataAdapterFactory.create();
+	var ClassImpl = {
+		data:function(){
+			return {
+				da:inst,
+				columns: [],
+				searcher: {
+					name:"search",
+					column:3,
+					fields:[],
+					value:{}
+				}
+				currentRow: {},
+				selection: [],
+			}
+		},
+		async mounted(){
+        await inst.load("url", "T_FUNA_USER_QUERY");
+				this.columns = inst.view("默认列表:table");
+				columns.unshift({key: 'opt',title:"操作",width: 120,align: 'center'});
+				columns.unshift({type: 'selection',width: 60,align: 'center'});
+				this.searcher.fields = inst.view("search:form");
+    }
+	}
+	exports["emap-usermanager"].mixins = [ClassImpl]
+})(window.turingform, window["tg-turing"]);
+
+```
+
 
 #### 外部传递数据加载 gridview
 
@@ -185,6 +220,7 @@ export default {
 | selection.sync | 已勾选行集合 | Array |  |  |
 | datas.sync | 当前页数据 | Array, Object |  |  |
 | rowRending | 渲染行控制样式，返回className | Function |  |  |
+| searchHandler | 查询按钮接管 | Function |  | 查询值，{Key1:1,Key2:2} |
 | dataAdapter | 数据源 | DataAdapter | | |
 | params | 执行数据查询时，带入的参数 | Object | | |
 | pager | 分页，总数大于0时显示。如果设置为null，强制隐藏 | Object |  | {size:20,index:1} |
