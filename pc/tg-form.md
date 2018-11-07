@@ -28,7 +28,7 @@
 let fields = [
     {"name":"WID","xtype":"text","caption":"WID"},
     {"name":"ACCOUNTID","xtype":"text","caption":"登录账号","dataSize":40}
-    {"name":"XBDM",xtype:"checkboxlist",options:[{id:"aaa",label:"女"},{id:"bbb",label:"男"}],params:{direction:"v"}},
+    {"name":"XBDM",xtype:"checkboxlist",options:[{value:"aaa",label:"女"},{value:"bbb",label:"男"}],params:{direction:"v"}},
     ...
 ]
 ```
@@ -304,7 +304,7 @@ ConnectItem 定义详见 文档接下来的章节：ConnectItem 每个xtype组�
 | url | 远程数据地址 | String | 空 |
 | fullrow | 占满一行 | Boolean | false |
 | placeholder | 提示文字 | String | 空 |
-| options | 数据选项 | Array<label:String, id:String> | 空 |
+| options | 数据选项 | Array<label:String, value:String> | 空 |
 | default | 默认值 | String | 空 |
 | validator.dataSize | 最大长度校验值 | Integer | 空 |
 | validator.checkType | 校验类型 | Enum | 空 |
@@ -507,7 +507,7 @@ export default {
 | display | 字段显示文本。select等字典型组件会显示文本 | Object |  | null |
 | placeholder | 文本占位符 | String | |  |
 | readonly | 字段内容只读 | Boolean | | false |
-| options | 可选项 | Array<label:String, id:String> |  | 空 |
+| options | 可选项 | Array<label:String, value:String> |  | 空 |
 | formReadonly | 表单整体只读 | Boolean | | false |
 | required | 必填 | Boolean | | false |
 | disabled | 禁用 | Boolean | | false |
