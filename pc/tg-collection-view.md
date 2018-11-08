@@ -1,15 +1,15 @@
-# tg-gridview
+# tg-collection-view
 
 ## 功能
 
 ### 搜索 + 工具栏 + 列表
 
-![完整的示例](../static/gridview-full.png)
+![完整的示例](../static/collection-view-full.png)
 
 #### 通过data-adapter加载数据
 
 ```html
-<tg-gridview :searcher="searcher" :columns="columns" :data-adapter="da" autoReadyDataBind :currentRow.sync="currentRow" :selection.sync="selection">
+<tg-collection-view :searcher="searcher" :data-adapter="da" :grid="{gutter: 16, column: 3}">
   <div slot="toolbar-left">
     <Button type="primary" @click="openModal(true)" v-tg-funckey="'abc'">新增</Button>
     <Button type="warning" @click="openModal()">修改</Button>
@@ -17,10 +17,13 @@
     |
     <Button type="error" @click="delIt">删除</Button>
   </div>
-  <div slot="columns-opt" slot-scope="scope">
-    <tg-linkbutton  @click="resetPassword(scope.row.ACCOUNTID)">重置密码</tg-linkbutton>
-  </div>
-</tg-gridview>
+  <template slot="itemTemplate" slot-scope="props">
+    项模板{{props.data}} / {{props.index}}
+  </template>
+  <template slot="alternateTemplate" slot-scope="props">
+    交替项模板{{props.data}} / {{props.index}}
+  </template>
+</tg-collection-view>
 ```
 
 静态模型加载
@@ -30,20 +33,14 @@
 	var inst = new turing.DataAdapterFactory.create(pageMeta, "T_FUNA_USER_QUERY");
 	var ClassImpl = {
 		data:function(){
-			var columns = inst.view("grid:table");
-			columns.unshift({key: 'opt',title:"操作",width: 120,align: 'center'});
-			columns.unshift({type: 'selection',width: 60,align: 'center'});
 			return {
 				da:inst,
-				columns: columns,
 				searcher: {
 					name:"search",
 					column:3,
 					fields:inst.view("search:form"),
 					value:{}
 				}
-				currentRow: {},
-				selection: [],
 			}
 		}
 	}
@@ -61,7 +58,6 @@
 		data:function(){
 			return {
 				da:inst,
-				columns: [],
 				searcher: {
 					name:"search",
 					column:3,
@@ -73,12 +69,9 @@
 			}
 		},
 		async mounted(){
-        await inst.load("url", "T_FUNA_USER_QUERY");
-				this.columns = inst.view("默认列表:table");
-				columns.unshift({key: 'opt',title:"操作",width: 120,align: 'center'});
-				columns.unshift({type: 'selection',width: 60,align: 'center'});
-				this.searcher.fields = inst.view("search:form");
-    }
+            await inst.load("url", "T_FUNA_USER_QUERY");
+            this.searcher.fields = inst.view("search:form");
+        }
 	}
 	exports["emap-usermanager"].mixins = [ClassImpl]
 })(window.turingform, window["tg-turing"]);
@@ -86,17 +79,21 @@
 ```
 
 
-#### 外部传递数据加载 gridview
+#### 外部传递数据加载 collection-view
 
 ```html
-<tg-gridview :columns="columns" :datas="data" @on-change="reload" :loading="loading" @on-highlight="onSelectedRow" @on-selection-change="onSelectionChange">
-  <div slot="toolbar-left">
-    <Button type="primary" @click="openModal(true)" v-tg-funckey="'abc'">新增</Button>
-    <Button type="warning" @click="openModal()">修改</Button>
-    <Button type="info" @click="viewIt">查看</Button>
-    |
-    <Button type="error" @click="delIt">删除</Button>
-  </div>
+<tg-gridview :grid="{gutter: 16, column: 3}" :searcher="searcher" :datas="data" @on-change="reload">
+    <template slot="itemTemplate" slot-scope="props">
+        <Card style="width:100%">
+            <p slot="title">
+                <Icon type="ios-film-outline"></Icon>
+                <tg-text class="tg-primary-1">主标题{{props.data}}</tg-text>
+            </p>
+            <tg-text class="tg-grey-3">副标题{{props.index}}</tg-text>
+            <tg-text><Badge count="new" class-name="tg-primary-1 tg-bg-white tg-br-primary-1"></Badge></tg-text>
+            <tg-text><tg-linkbutton>Text</tg-linkbutton></tg-text>
+        </Card>
+    </template>
 </tg-gridview>
 ```
 
@@ -105,21 +102,14 @@
 	var inst = new turing.DataAdapterFactory.create(pageMeta, "T_FUNA_USER_QUERY");
 	var ClassImpl = {
 		data:function(){
-			var columns = inst.view("grid:table");
-			columns.unshift({type: 'selection',width: 60,align: 'center'});
 			return {
-				columns: columns,
 				data:[],
-				fields: inst.view("form:form"),
 				searcher: {
 					name:"search",
 					column:3,
 					fields:inst.view("search:form"),
 					value:{}
 				}
-				currentRow: {},
-				selection: [],
-				loading: false,
 			}
 		},
 		created: function(){
@@ -132,15 +122,9 @@
 				inst.pageNumber = pager.index;
 				inst.pageSize = pager.size;
 				inst.findAll(searchvalue).then(function(results) {
-						that.data = results;
+					that.data = results;
 				})
 			},
-			onSelectedRow: function(newRow, oldRow) {
-				this.currentRow = newRow;
-			},
-			onSelectionChange: function(selection) {
-				this.selection = selection;
-			}
 		}
 	}
 	exports["emap-usermanager"].mixins = [ClassImpl]
@@ -149,58 +133,6 @@
 ```
 
 
-### 仅 grid
-
-不设置 searcher 时，上面的搜索不会显示
-
-![完整的示例](../static/gridview-simple.png)
-
-
-当分页的总数 < 0 时，分页不显示
-
-通过 slot: toolbar-left 插入工具栏按钮
-
-```html
-<tg-gridview :columns="columns" :data-adapter="da" autoReadyDataBind :currentRow.sync="currentRow" :selection.sync="selection">
-  <div slot="toolbar-left">
-    <Button type="primary" @click="openModal(true)" v-tg-funckey="'abc'">新增</Button>
-    <Button type="warning" @click="openModal()">修改</Button>
-    <Button type="info" @click="viewIt">查看</Button>
-    |
-    <Button type="error" @click="delIt">删除</Button>
-  </div>
-  <div slot="columns-opt" slot-scope="scope">
-    <tg-linkbutton  @click="resetPassword(scope.row.ACCOUNTID)">重置密码</tg-linkbutton>
-  </div>
-</tg-gridview>
-```
-
-### 根据状态控制行颜色
-
-```html
-<tg-gridview :columns="columns" :data-adapter="da" autoReadyDataBind :rowRending="rowRending">
-  ...
-</tg-gridview>
-```
-
-```js
-export default {
-  methods:{
-    rowRending(row, index){
-      if (row["status"] === "done") {
-        return "row-done";
-      }
-    }
-  }
-}
-```
-
-```css
-.row-done td{
-  background-color: #2db7f5;
-  color: #fff;
-}
-```
 ## API
 
 
@@ -209,22 +141,17 @@ export default {
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|-------|---------|-------|--------|
 | datas | 静态数据 | Array, Object | [], {count:0, rows:[]} |  |
-| columns | 字段模型 | Array |  | [] |
-| loading | 显示表格加载中动画 | Boolean |  | false |
 | searcher | 查询组件 | Object | {name:"search",column:3,fields:[],value:{}} |  |
 | toolbar-left | 工具栏-左 | Slot |  |  |
 | toolbar-right | 工具栏-右 | Slot |  |  |
-| columns-字段 | 表格字段 | Slot |  |  |
+| itemTemplate | 显示项 | Slot |  |  |
+| alternateTemplate | 交替项 | Slot |  |  |
 | search-字段 | 搜索字段 | Slot |  |  |
-| currentRow.sync | 已选行 | Object |  |  |
-| selection.sync | 已勾选行集合 | Array |  |  |
 | datas.sync | 当前页数据 | Array, Object |  |  |
-| rowRending | 渲染行控制样式，返回className | Function |  |  |
 | searchHandler | 查询按钮接管 | Function |  | 查询值，{Key1:1,Key2:2} |
 | dataAdapter | 数据源 | DataAdapter | | |
 | params | 执行数据查询时，带入的参数 | Object | | |
 | pager | 分页，总数大于0时显示。如果设置为null，强制隐藏 | Object |  | {size:20,index:1} |
-| autoReadyDataBind | 组件ready事件时，自动执行数据绑定 | Boolean | | false |
 
 ### Methods
 | 方法名称 | 说明 | 参数 |
@@ -237,9 +164,6 @@ export default {
 |---------- |-------- |---------- |
 | on-change  | 表格数据变化 | 分页:`{index, size}`, 查询值, 排序字段, 触发类型  |
 | on-value-change  | 搜索值变化 | 字段名, 值, 显示值, 模型, 全部搜索值  |
-| on-highlight  | 单选行触发 | 当前选中行, 之前选中行  |
-| on-select-all  | 全选触发 | 已选行集合  |
-| on-selection-change  | 多选checkbox触发 | 已选行集合  |
 | ready  | 组件加载完成，主要用于手动做数据绑定 | 组件实例 inst  |
 | data-loaded  | 数据加载完成 | datas  |
 

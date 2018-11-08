@@ -11,10 +11,10 @@ datas 属性支持静态数据传入，与 autoReadyDataBind 属性互斥，在�
 ```html
 <tg-listview :datas="[{a:1,b:2},{a:11,b:22}]" bordered>
   <template slot="itemTemplate" slot-scope="props">
-    项模板
+    项模板{{props.data}} / {{props.index}}
   </template>
   <template slot="alternateTemplate" slot-scope="props">
-    交替项模板
+    交替项模板{{props.data}} / {{props.index}}
   </template>
   <template slot="pager">
     页脚模板
