@@ -82,7 +82,7 @@
 #### 外部传递数据加载 collection-view
 
 ```html
-<tg-gridview :grid="{gutter: 16, column: 3}" :searcher="searcher" :datas="data" @on-change="reload">
+<tg-collection-view :grid="{gutter: 16, column: 3}" :searcher="searcher" :datas="data" @on-change="reload">
     <template slot="itemTemplate" slot-scope="props">
         <Card style="width:100%">
             <p slot="title">
@@ -94,7 +94,7 @@
             <tg-text><tg-linkbutton>Text</tg-linkbutton></tg-text>
         </Card>
     </template>
-</tg-gridview>
+</tg-collection-view>
 ```
 
 ```js
