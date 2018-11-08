@@ -229,7 +229,7 @@ export default {
 ### Methods
 | 方法名称 | 说明 | 参数 |
 |---------- |-------- |---------- |
-| reload  | 刷新数据 | 分页 `{index:1,size:50}`, 加载完回调 `callback` |
+| reload  | 刷新数据 | 查询参数 `{pageNumber:1,pageSize:50,params:{}}`, 加载完回调 `callback` |
 | searchClear | 清除搜索条件 | |
 
 ### Events
