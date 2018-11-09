@@ -236,7 +236,7 @@ export default {
     await inst.load("url", "T_FUNA_USER_QUERY");
 		this.columns = inst.view("默认列表:table");
 		this.$refs.grid.reload({}, (datas) => {
-			this.$refs.grid.setData(datas);
+			this.$refs.grid.SetData(datas);
 		});
   }
 }
