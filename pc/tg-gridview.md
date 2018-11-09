@@ -9,7 +9,7 @@
 #### 通过data-adapter加载数据
 
 ```html
-<tg-gridview :searcher="searcher" :columns="columns" :data-adapter="da" autoReadyDataBind :currentRow.sync="currentRow" :selection.sync="selection">
+<tg-gridview :searcher="searcher" :columns="columns" autoReadyDataBind :currentRow.sync="currentRow" :selection.sync="selection">
   <div slot="toolbar-left">
     <Button type="primary" @click="openModal(true)" v-tg-funckey="'abc'">新增</Button>
     <Button type="warning" @click="openModal()">修改</Button>
@@ -54,6 +54,23 @@
 
 动态模型加载
 
+
+```html
+<tg-gridview ref="grid" :searcher="searcher" :columns="columns" :data-adapter="da" :currentRow.sync="currentRow" :selection.sync="selection">
+  <div slot="toolbar-left">
+    <Button type="primary" @click="openModal(true)" v-tg-funckey="'abc'">新增</Button>
+    <Button type="warning" @click="openModal()">修改</Button>
+    <Button type="info" @click="viewIt">查看</Button>
+    |
+    <Button type="error" @click="delIt">删除</Button>
+  </div>
+  <div slot="columns-opt" slot-scope="scope">
+    <tg-linkbutton  @click="resetPassword(scope.row.ACCOUNTID)">重置密码</tg-linkbutton>
+  </div>
+</tg-gridview>
+```
+
+
 ```js
 (function (exports, turing) {
 	var inst = new turing.DataAdapterFactory.create();
@@ -78,6 +95,7 @@
 				columns.unshift({key: 'opt',title:"操作",width: 120,align: 'center'});
 				columns.unshift({type: 'selection',width: 60,align: 'center'});
 				this.searcher.fields = inst.view("search:form");
+				this.$refs.grid.reload();
     }
 	}
 	exports["emap-usermanager"].mixins = [ClassImpl]
@@ -201,6 +219,30 @@ export default {
   color: #fff;
 }
 ```
+
+### 数据预处理
+
+
+```html
+<tg-gridview ref="grid" :columns="columns" :data-adapter="da">
+  ...
+</tg-gridview>
+```
+
+```js
+var inst = new turing.DataAdapterFactory.create();
+export default {
+  async mounted(){
+    await inst.load("url", "T_FUNA_USER_QUERY");
+		this.columns = inst.view("默认列表:table");
+		this.$refs.grid.reload({}, (datas) => {
+			this.$refs.grid.setData(datas);
+		});
+  }
+}
+```
+
+
 ## API
 
 
