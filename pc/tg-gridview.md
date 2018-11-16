@@ -252,6 +252,7 @@ export default {
 |------|-------|---------|-------|--------|
 | datas | 静态数据 | Array, Object | [], {count:0, rows:[]} |  |
 | columns | 字段模型 | Array |  | [] |
+| border | 显示表格纵向边框线 | Boolean |  | true |
 | loading | 显示表格加载中动画 | Boolean |  | false |
 | searcher | 查询组件 | Object | {name:"search",column:3,fields:[],value:{}} |  |
 | toolbar-left | 工具栏-左 | Slot |  |  |
