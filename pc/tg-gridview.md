@@ -259,6 +259,7 @@ export default {
 | toolbar-right | 工具栏-右 | Slot |  |  |
 | columns-字段 | 表格字段 | Slot |  |  |
 | search-字段 | 搜索字段 | Slot |  |  |
+| footer | 页脚 | Slot |  |  |
 | currentRow.sync | 已选行 | Object |  |  |
 | selection.sync | 已勾选行集合 | Array |  |  |
 | datas.sync | 当前页数据 | Array, Object |  |  |
