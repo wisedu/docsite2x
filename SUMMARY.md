@@ -22,6 +22,7 @@
   * [交互设计规范](http://my.wisedu.com/edc/ID/1.SPEC/Mobile/1.Components.Component/M-设计规范2.0_2018.07.11/#g=1&p=更新日志)
   * [tg-actionSheet](mobile/action-sheet.md)
   * [tg-button](mobile/button.md)
+  * [tg-badge](mobile/badge.md)
   * [tg-cell](mobile/cell.md)
   * [tg-checkbox](mobile/checkbox.md)
   * [tg-checkbox-group](mobile/checkbox-group.md)

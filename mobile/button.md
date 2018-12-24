@@ -22,16 +22,24 @@
 
 ![按钮颜色](../static/button/button_type.png)
 
+>目前颜色有 "default"(默认) 、"primary" 、 "success" 、 "warning" 、 "danger" 五种类型
+
 ```html
 <tg-button type="default">普通按钮</tg-button>
-<tg-button type="primary">primary按钮</tg-button>
+<tg-button type="primary">primary</tg-button>
+<tg-button type="success">success</tg-button>
+<tg-button type="warning">warning</tg-button>
+<tg-button type="danger">danger</tg-button>
 ```
 ### 按钮边框设定（plain）
 
 ![按钮边框](../static/button/button_plain.png)
 ```html
 <tg-button plain>普通按钮</tg-button>
-<tg-button type="primary" plain>primary按钮</tg-button>
+<tg-button type="primary" plain>普通按钮</tg-button>
+<tg-button type="success" plain>普通按钮</tg-button>
+<tg-button type="warning" plain>普通按钮</tg-button>
+<tg-button type="danger" plain>普通按钮</tg-button>
 ```
 ### 按钮边框倒角设定（square）
 
