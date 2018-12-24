@@ -1,7 +1,7 @@
 # tg-input
 
 ## 基础用法
-![基础用法](../static/input/input.png)
+![基础用法](../static/mobile/input/input.png)
 
 ```html
 <tg-input v-model="value"></tg-input>
@@ -9,7 +9,7 @@
 
 ##基本功能用法
 ### 显示清除图标（clearable）
-![清除图标](../static/input/input_clear.png)
+![清除图标](../static/mobile/input/input_clear.png)
 
 ```html
 <tg-input v-model="value" clearable></tg-input>
@@ -17,7 +17,7 @@
 
 
 ### 是否隐藏密码（eye）
-![密码隐藏](../static/input/input_eye.png)
+![密码隐藏](../static/mobile/input/input_eye.png)
 > `eye` 属性仅限于 `type="password"` 时有效，默认可见模式图标，点击可切换为不可见模式图标及密码值。eye也可以是对象，如：{open: true}, `open` 用来设置默认是可见/非可见图标
 
 ```html
@@ -25,14 +25,14 @@
 ```
 
 ### 自动聚焦（autofocus）
-![密码隐藏](../static/input/input_autofocus.png)
+![密码隐藏](../static/mobile/input/input_autofocus.png)
 
 ```html
 <tg-input v-model="value" autofocus></tg-input>
 ```
 
 ### 原生type的四种类型
-![input原生类型](../static/input/input_type.png)
+![input原生类型](../static/mobile/input/input_type.png)
 
 ```html
 <tg-input v-model="value_text" type="textarea" class="border-buttom"></tg-input>
@@ -53,7 +53,7 @@ data() {
 ```
 
 ### 只读（readonly）、禁用（disabled）两种状态
-![input原生类型](../static/input/input_readonly+disabled.png)
+![input原生类型](../static/mobile/input/input_readonly+disabled.png)
 
 ```html
 <tg-input v-model="value" readonly type="text" placeholder="只读状态" class="border-buttom"></tg-input>
@@ -61,7 +61,7 @@ data() {
 ```
 
 ###最多输入字符数（maxlength）
-![最多字符数](../static/input/input_maxlength.png)
+![最多字符数](../static/mobile/input/input_maxlength.png)
 >示例最大输入值为 `9` ，如图所示。组件默认值为 `60` 个字符数
 
 ```html
@@ -71,7 +71,7 @@ data() {
 
 ##高级组合用法
 ### 标准表单输入类组件（input与cell组合）
-![form表单](../static/input/form_input.png)
+![form表单](../static/mobile/input/form_input.png)
 
 ```html
 <tg-cell-group title="表单标准模式">
@@ -108,11 +108,11 @@ data() {
 </tg-cell-group>
 ```
 ###标题与输入值关联模式（column）
-![未输入](../static/input/input_column1.png)
+![未输入](../static/mobile/input/input_column1.png)
 
-![输入中](../static/input/input_column2.png)
+![输入中](../static/mobile/input/input_column2.png)
 
-![输入完](../static/input/input_column3.png)
+![输入完](../static/mobile/input/input_column3.png)
 
 ```html
 <tg-cell customized>
@@ -126,8 +126,8 @@ data() {
 ```
 
 ###必填项校验（validateFail）
-![必填项校验1](../static/input/input_validateFail1.png)
-![必填项校验2](../static/input/input_validateFail2.png)
+![必填项校验1](../static/mobile/input/input_validateFail1.png)
+![必填项校验2](../static/mobile/input/input_validateFail2.png)
 >示例仅展示如何使用 `validateFail` 属性修改样式，具体何时配合业务逻辑使用，需要开发者考虑。
 
 ```html
@@ -156,9 +156,9 @@ methods: {
 ```
 
 ###输入值自定义校验（validate/validateInfo）
-![校验成功](../static/input/input_validate1.png)
+![校验成功](../static/mobile/input/input_validate1.png)
 
-![校验失败](../static/input/input_validate2.png)
+![校验失败](../static/mobile/input/input_validate2.png)
 >这里可以通过 `blur/change` 事件，也可以通过监听 `value` 值来进行校验
 
 ```html
@@ -192,11 +192,11 @@ methods: {
 ```
 
 ###标题与输入值关联模式 输入值校验（column/validateInfo）
-![校验成功](../static/input/input_column+validate1.png)
+![校验成功](../static/mobile/input/input_column+validate1.png)
 
-![校验失败](../static/input/input_column+validate2.png)
+![校验失败](../static/mobile/input/input_column+validate2.png)
 
-![校验失败](../static/input/input_column+validate3.png)
+![校验失败](../static/mobile/input/input_column+validate3.png)
 
 ```html
 <tg-cell customized>
@@ -228,7 +228,7 @@ methods: {
 },
 ```
 ###特殊场景下携带单位/符号用法
-![校验成功](../static/input/input_especial_unit.png)
+![校验成功](../static/mobile/input/input_especial_unit.png)
 
 ```html
 <tg-cell title="年收入" solid customized>

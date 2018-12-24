@@ -2,7 +2,7 @@
 
 ##基础用法
 
-![基础用法](../static/checkbox/checkbox.png)
+![基础用法](../static/mobile/checkbox/checkbox.png)
 
 ```html
 <tg-checkbox v-model="checked">复选框</tg-checkbox>
@@ -10,7 +10,7 @@
 ##基础功能用法
 
 ###数据为Object格式，且运行设定为disabled
-![基础用法](../static/checkbox/checkbox_option.png)
+![基础用法](../static/mobile/checkbox/checkbox_option.png)
 >Object数据格式下， `label` 属性为显示文本， `value` 属性为标识值，可以是其id值，`disabled` 属性控制是否禁用
 ```html
 <tg-checkbox 
@@ -40,7 +40,7 @@ data() {
 },
 ```
 ###图标位置（position）
-![基础用法](../static/checkbox/checkbox_position.png)
+![基础用法](../static/mobile/checkbox/checkbox_position.png)
 ```html
 <tg-checkbox 
 	v-model="checked"

@@ -2,7 +2,7 @@
 
 
 ## 标准用法
-![标准按钮](../static/cell/cell.png)
+![标准按钮](../static/mobile/cell/cell.png)
 >这里有三个基础属性: `title` 属性为标题参数，`value`属性为内容参数，	`name`属性为该组件的标识，默认会自动产生一个不重复的参数（形如： 'field-item-xxx'）,可用作唯一id
 ```html
 <tg-cell name="tg-cell" title="标题" value="这是标准用法的内容"></tg-cell>
@@ -10,7 +10,7 @@
 ##基本功能用法
 
 ###只读/禁用（readonly/disabled）
-![只读/禁用](../static/cell/cell_readonly+disabled.png)
+![只读/禁用](../static/mobile/cell/cell_readonly+disabled.png)
 
 ```html
 <tg-cell 
@@ -26,7 +26,7 @@
 ```
 
 ###副标题（brief）
-![副标题](../static/cell/cell_brief.png)
+![副标题](../static/mobile/cell/cell_brief.png)
 >副标题不宜过长，否则将会挤压右侧内容的宽度，可用 `solid` 加以控制
 
 ```html
@@ -37,7 +37,7 @@
 </tg-cell>
 ```
 ###必填（required）
-![必填](../static/cell/cell_required.png)
+![必填](../static/mobile/cell/cell_required.png)
 >必填 <span style="color:red;">\*</span> 有两种实现形式，内置了 required 属性已实现，介于某些特定场景，样式无法满足时，可通过 `slot="left"` 进行自定义
 
 ```html
@@ -65,7 +65,7 @@
 }
 ```
 ###标题固定宽度（solid）
-![固定宽度](../static/cell/cell_solid.png)
+![固定宽度](../static/mobile/cell/cell_solid.png)
 >标题固定宽度，单行最大显示 6 个中文汉字，最多显示两行
 
 ```html
@@ -81,7 +81,7 @@
 </tg-cell>
 ```
 ###标题/内容上对齐（baseline）
-![上对齐](../static/cell/cell_baseline.png)
+![上对齐](../static/mobile/cell/cell_baseline.png)
 >使用场景： 当内容高度远大于标题是，推荐使用标题上对齐
 
 ```html
@@ -93,7 +93,7 @@
 </tg-cell>
 ```
 ###	箭头名称（arrow）
-![箭头](../static/cell/cell_arrow.png)
+![箭头](../static/mobile/cell/cell_arrow.png)
 >箭头名称有 `上/下/左/右` 四种，分别对应 `arrow-up/arrow-down/arrow-left/arrow-right`
 
 ```html
@@ -104,7 +104,7 @@
 </tg-cell>
 ```
 ###	内容对齐方式（align）
-![内容对齐方式](../static/cell/cell_align.png)
+![内容对齐方式](../static/mobile/cell/cell_align.png)
 
 ```html
 <tg-cell
@@ -125,7 +125,7 @@
 
 ##	高阶组合用法
 ### 插槽用法（slot）
-![内容对齐方式](../static/cell/cell_slot.png)
+![内容对齐方式](../static/mobile/cell/cell_slot.png)
 >插槽有 `left` 、`right`、默认内容（slot）三个，其中默认内容插槽使用需要在 `tg-cell` 标签上添加 `customized` 属性
 
 ```html
@@ -151,7 +151,7 @@
 </tg-cell>
 ```
 ### 与tg-cell-group组合使用
-![内容对齐方式](../static/cell/cell_group.png)
+![内容对齐方式](../static/mobile/cell/cell_group.png)
 >**说明：** 	`tg-cell` 组件本身无边框样式，与 `tg-cell-group` 组合使用，那么非最后一个 `tg-cell` 会自动添加有一条下划线。 `tg-cell-group` 的 `title` 提供分组名称
 
 ```html

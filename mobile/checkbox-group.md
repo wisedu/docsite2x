@@ -2,7 +2,7 @@
 
 ##基础用法
 
-![基础用法](../static/checkbox-group/checkbox-group.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group.png)
 >options数据， `label` 属性为显示文本， `value` 属性为标识值（可以是其id值），`disabled` 属性控制是否禁用
 
 ```html
@@ -26,7 +26,7 @@ data() {
 ##基础功能用法
 
 ###复选框组标题（title）
-![基础用法](../static/checkbox-group/checkbox-group_title.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_title.png)
 ```html
 <tg-check-group
 	v-model="selected"
@@ -36,7 +36,7 @@ data() {
 ```
 
 ###复选框组标题+必选（required）
-![基础用法](../static/checkbox-group/checkbox-group_title+required.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_title+required.png)
 ```html
 <tg-check-group
 	v-model="selected"
@@ -47,7 +47,7 @@ data() {
 ```
 
 ###复选框组图标位置（iconPosition）
-![基础用法](../static/checkbox-group/checkbox-group_position.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_position.png)
 ```html
 <tg-check-group
 	v-model="selected"
@@ -58,7 +58,7 @@ data() {
 ```
 
 ###复选框组可选最多项设置（max）
-![基础用法](../static/checkbox-group/checkbox-group_max.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_max.png)
 >**当设置 `:max="1"` 时，即复选框组单选，请自行区别与 `radio` 单选区分，且此时v-model为String类型**
 
 ```html
@@ -70,7 +70,7 @@ data() {
 ```
 
 ###复选框组禁用（disabled）
-![基础用法](../static/checkbox-group/checkbox-group_disabled.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_disabled.png)
 ```html
 <tg-check-group
 	v-model="selected"
@@ -79,7 +79,7 @@ data() {
 </tg-check-group>
 ```
 ###复选框组横线布局（horizontal）
-![基础用法](../static/checkbox-group/checkbox-group_horizontal.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_horizontal.png)
 
 ```html
 <tg-check-group
@@ -91,7 +91,7 @@ data() {
 </tg-check-group>
 ```
 ###复选框组横线布局每行列数（column）
-![基础用法](../static/checkbox-group/checkbox-group_horizontal+column2.png)
+![基础用法](../static/mobile/checkbox-group/checkbox-group_horizontal+column2.png)
 
 ```html
 <tg-check-group

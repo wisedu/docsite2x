@@ -2,7 +2,7 @@
 
 ##标准用法
 
-![标准按钮](../static/button/button.png)
+![标准按钮](../static/mobile/button/button.png)
 
 ```html
 <tg-button @click="handleClick">默认按钮</tg-button>
@@ -11,7 +11,7 @@
 ##基本功能用法
 
 ###按钮大小设定（size）
-![按钮尺寸](../static/button/button_size.png)
+![按钮尺寸](../static/mobile/button/button_size.png)
 
 ```html
 <tg-button size="small>小按钮</tg-button>
@@ -20,7 +20,7 @@
 ```
 ###按钮颜色设定（type）
 
-![按钮颜色](../static/button/button_type.png)
+![按钮颜色](../static/mobile/button/button_type.png)
 
 >目前颜色有 "default"(默认) 、"primary" 、 "success" 、 "warning" 、 "danger" 五种类型
 
@@ -33,7 +33,7 @@
 ```
 ### 按钮边框设定（plain）
 
-![按钮边框](../static/button/button_plain.png)
+![按钮边框](../static/mobile/button/button_plain.png)
 ```html
 <tg-button plain>普通按钮</tg-button>
 <tg-button type="primary" plain>普通按钮</tg-button>
@@ -43,21 +43,21 @@
 ```
 ### 按钮边框倒角设定（square）
 
-![按钮倒角](../static/button/button_square.png)
+![按钮倒角](../static/mobile/button/button_square.png)
 ```html
 <tg-button square>无圆角按钮</tg-button>
 <tg-button square type="primary">无圆角按钮</tg-button>
 ```
 ### 按钮块设定（block）
 
-![按钮块元素](../static/button/button_block.png)
+![按钮块元素](../static/mobile/button/button_block.png)
 ```html
 <tg-button block>标准按钮</tg-button>
 <tg-button size="small" block>小按钮</tg-button>
 ```
 ### 按钮原生类型设定（native-type）
 
-![按钮原生类型设定](../static/button/button_nativeType.png)
+![按钮原生类型设定](../static/mobile/button/button_nativeType.png)
 ```html
 <tg-button native-type="button" type="primary">button类型</tg-button>
 <tg-button native-type="submit" type="primary">submit类型</tg-button>
@@ -65,15 +65,15 @@
 ```
 ### 自定义按钮标签元素（tag）
 
-![按钮Tag1](../static/button/button_tag1.png)
-![按钮Tag2](../static/button/button_tag2.png)
+![按钮Tag1](../static/mobile/button/button_tag1.png)
+![按钮Tag2](../static/mobile/button/button_tag2.png)
 ```html
 <tg-button tag="div" size="large">div标签</tg-button>
 <tg-button tag="a" href="https://res.wisedu.com" target="_blank" size="large">a标签</tg-button>
 ```
 ### 按钮内容自定义
 
-![按钮内容自定义](../static/button/button_slot.png)
+![按钮内容自定义](../static/mobile/button/button_slot.png)
 ```html
 <tg-button tag="div" size="large">
 	<svg class="icon" aria-hidden="true">
@@ -84,7 +84,7 @@
 ```
 ### 按钮组
 
-![按钮组](../static/button/button_group.png)
+![按钮组](../static/mobile/button/button_group.png)
 
 ```html
 <tg-button-group>

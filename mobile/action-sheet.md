@@ -2,7 +2,7 @@
 
 ##基础用法
 
-![基础用法](../static/actionsheet/action-sheet.png)
+![基础用法](../static/mobile/actionsheet/action-sheet.png)
 
 ```html
 <tg-action-sheet
@@ -41,7 +41,7 @@ methods: {
 ```
 ###`active`属性高亮某一项
 
-![active高亮项](../static/actionsheet/actionSheet_active.png)
+![active高亮项](../static/mobile/actionsheet/actionSheet_active.png)
 
 ```html
 <tg-action-sheet
@@ -50,7 +50,7 @@ methods: {
 ```
 ### 完整的data数据模型
 
-![data数据格式](../static/actionsheet/actionSheet_data.png)
+![data数据格式](../static/mobile/actionsheet/actionSheet_data.png)
 
 ```js
 data() {
