@@ -31,6 +31,7 @@
   * [tg-picker](mobile/picker.md)
   * [tg-popup](mobile/popup.md)
   * [tg-progress](mobile/progress.md)
+  * [tg-radio](mobile/radio.md)
   * [tg-search](mobile/search.md)
 
   * [tg-stepper](mobile/stepper.md)
