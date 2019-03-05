@@ -84,7 +84,7 @@ methods: {
 
 ![横向布局1](../static/mobile/radio/radio_horizontal1.png)
 
-> 该模式下，根据设计要求，选项一般 ≤ 4，且字数不宜过长，如果一行无法显示，请自行使用锤子布局形式，每项单独一行。
+> 该模式下，根据设计要求，选项一般 ≤ 4，且字数不宜过长，如果一行无法显示，请自行使用垂直布局形式，每项单独一行。
 
 ```html
 <tg-radio v-model="value" :options="data" required title="对你自己的学习能力评分" horizontal @change="handleChange"></tg-radio>

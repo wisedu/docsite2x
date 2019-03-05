@@ -38,6 +38,7 @@
   * [tg-steps](mobile/steps.md)
   * [tg-switch](mobile/switch.md)
   * [tg-textarea](mobile/textarea.md)
+  * [移动树组件(tg-tree)](mobile/tree.md)
 - [卡片]()
   * [Portals Api](card/portals-api.md)
   * [Portals 内嵌卡片开发](card/portals-dev.md)
